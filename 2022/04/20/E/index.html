@@ -6,7 +6,7 @@
     
     <title>CCPC2020 Weihai E - PC 的 blog</title>
     <meta charset="UTF-8">
-    <meta name="keywords" content="null">
+    <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
     
     
@@ -34,9 +34,9 @@
         href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"
     />
     
-    <link rel="stylesheet" href="/lib/mdui_043tiny/css/mdui.css?v=1654419222648">
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1654419222648">
-    <link rel="stylesheet" href="/css/style.css?v=1654419222648">
+    <link rel="stylesheet" href="/lib/mdui_043tiny/css/mdui.css?v=1654497613358">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1654497613358">
+    <link rel="stylesheet" href="/css/style.css?v=1654497613358">
      
     
 <meta name="generator" content="Hexo 6.1.0"></head>
@@ -191,44 +191,36 @@
 
       <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>在游戏“炉石传说”中，存在一张卡牌”考古专家雷诺”，其在特定条件下会对敌方所有随从随机地进行总量为10点的伤害。而其随机方式是对于每一点伤害依次进行判定，等概率地从所有敌方的存活随从中选择一个进行伤害。我们关注于对于某特定随从序列其杀死随从数量的期望，并将其伤害从常数 $10$ 推广到某一给定数值 $m$，得到如下问题：</p>
 <ul>
-<li>对某一正项序列 $a_1,a_2,\cdots,a_n$ ,依次进行 $m$ 次操作，每次在所有非零项 $a_{p_1},a_{p_2}, \cdots,a_{p_m}$ 中等概率地选取一个数 $a_{p_i}$ 并令 $a_{p_i}=a_{p_i}-1$ 。记 $m$ 次后的非零项个数为 $x$ ,求 $x$ 的期望 $E(x)$. </li>
+<li>对某一正项序列 $a_1,a_2,\cdots,a_n$ ,依次进行 $m$ 次操作，每次在所有非零项 $a_{p_1},a_{p_2}, \cdots,a_{p_m}$ 中等概率地选取一个数 $a_{p_i}$ 并令 $a_{p_i}&#x3D;a_{p_i}-1$ 。记 $m$ 次后的非零项个数为 $x$ ,求 $x$ 的期望 $E(x)$.</li>
 </ul>
-<h2 id="问题解法"><a href="#问题解法" class="headerlink" title="问题解法"></a>问题解法</h2><p>定义 $S_l= \{s_1,s_2,\cdots,s_l \}$ 表示一个长度为 $l$ 的操作序列，其中，$s_i \in[1,n]$ 表示第 $i$ 次操作选取了 $a_{s_i}$ .</p>
-<p>令 $ \sigma_i^{S_l}$ 表示经 $S_l$ 的前 $i$ 次操作后，序列 $ \{a_i\}$ 剩余的非零项的个数。特别地，令 $ \sigma^{S_l}= \sigma_l^{S_l}$ 表示经过全部 $S_l$ 的操作后，其非零项的个数。</p>
-<p>那么，每个合法操作序列出现的概率 </p>
-<script type="math/tex; mode=display">
-P(S_l)=\prod_{k=1}^{l}\dfrac{1}{\sigma_{i}^{S_l}}</script><p>定义 $\Gamma$ 为所有长度为 $m$ 的合法操作序列的集合，则</p>
-<script type="math/tex; mode=display">
-E(x)=\sum_{S_m\in \Gamma}P(S_m)(n-\sigma^{S_m})</script><p>接下来，我们将问题的求解分为两个步骤。</p>
-<h3 id="Part-I"><a href="#Part-I" class="headerlink" title="Part I"></a>Part I</h3><p>定义集合 $\Gamma_{l,Set}$ $0 \le l  \le m,Set \subseteq [n]$ 是序列 $S= \{s_1,s_2, \cdots,s_n \}$ 的集合，要求序列满足：</p>
+<h2 id="问题解法"><a href="#问题解法" class="headerlink" title="问题解法"></a>问题解法</h2><p>定义 $S_l&#x3D; {s_1,s_2,\cdots,s_l }$ 表示一个长度为 $l$ 的操作序列，其中，$s_i \in[1,n]$ 表示第 $i$ 次操作选取了 $a_{s_i}$ .</p>
+<p>令 $ \sigma_i^{S_l}$ 表示经 $S_l$ 的前 $i$ 次操作后，序列 $ {a_i}$ 剩余的非零项的个数。特别地，令 $ \sigma^{S_l}&#x3D; \sigma_l^{S_l}$ 表示经过全部 $S_l$ 的操作后，其非零项的个数。</p>
+<p>那么，每个合法操作序列出现的概率<br>$$<br>P(S_l)&#x3D;\prod_{k&#x3D;1}^{l}\dfrac{1}{\sigma_{i}^{S_l}}<br>$$</p>
+<p>定义 $\Gamma$ 为所有长度为 $m$ 的合法操作序列的集合，则<br>$$<br>E(x)&#x3D;\sum_{S_m\in \Gamma}P(S_m)(n-\sigma^{S_m})<br>$$<br>接下来，我们将问题的求解分为两个步骤。</p>
+<h3 id="Part-I"><a href="#Part-I" class="headerlink" title="Part I"></a>Part I</h3><p>定义集合 $\Gamma_{l,Set}$ $0 \le l  \le m,Set \subseteq [n]$ 是序列 $S&#x3D; {s_1,s_2, \cdots,s_n }$ 的集合，要求序列满足：</p>
 <ol>
-<li>$ \forall 1 \le i \le n,s_i=0 || s_i \in Set$ </li>
-<li>$ \forall j \in S,cnt_j(Set)=a_j$</li>
+<li>$ \forall 1 \le i \le n,s_i&#x3D;0 || s_i \in Set$ </li>
+<li>$ \forall j \in S,cnt_j(Set)&#x3D;a_j$</li>
 </ol>
-<p>其中，$s_i=0$ 代表第 $i$ 次操作的对象 $\notin Set$ , $cnt_i(S)$ 表示序列 $S$ 中 $i$ 的出现次数</p>
-<p>设 $f_{l,Set} (0 \le l \le m,Set \subseteq [n])$ 为</p>
-<script type="math/tex; mode=display">
-f_{l,Set}=\sum_{s \in \Gamma_{l,Set}} p(s)</script><p>则有,</p>
-<script type="math/tex; mode=display">
-f_{0,\emptyset}=1</script><script type="math/tex; mode=display">
-f_{l,Set}=\dfrac{1}{n-|Set|}f_{l-1,Set}+ \sum_{i \in Set} \dfrac{1}{n-|Set-\{i\}|} f_{l-1,Set-\{i\}} \times  \binom{l-sum(Set-\{i\})-1}{a_i-1}</script><p>其中,</p>
-<script type="math/tex; mode=display">
-sum(A)=\sum_{i \in A} a_i</script><p>递推式中的第一项表示 $s_l=0$ 的概率,后面则是枚举 $s_l=i$ 且 $cnt_i(S)=a_i$ 的概率,将这两类情况求和,即为满足条件的总概率.</p>
+<p>其中，$s_i&#x3D;0$ 代表第 $i$ 次操作的对象 $\notin Set$ , $cnt_i(S)$ 表示序列 $S$ 中 $i$ 的出现次数</p>
+<p>设 $f_{l,Set} (0 \le l \le m,Set \subseteq [n])$ 为<br>$$<br>f_{l,Set}&#x3D;\sum_{s \in \Gamma_{l,Set}} p(s)<br>$$<br>则有,</p>
+<p>$$<br>f_{0,\emptyset}&#x3D;1<br>$$</p>
+<p>$$<br>f_{l,Set}&#x3D;\dfrac{1}{n-|Set|}f_{l-1,Set}+ \sum_{i \in Set} \dfrac{1}{n-|Set-{i}|} f_{l-1,Set-{i}} \times  \binom{l-sum(Set-{i})-1}{a_i-1}<br>$$<br>其中,</p>
+<p>$$<br>sum(A)&#x3D;\sum_{i \in A} a_i<br>$$</p>
+<p>递推式中的第一项表示 $s_l&#x3D;0$ 的概率,后面则是枚举 $s_l&#x3D;i$ 且 $cnt_i(S)&#x3D;a_i$ 的概率,将这两类情况求和,即为满足条件的总概率.</p>
 <p>可以通过预处理所有的 $sum(A)$ 以及 $|A|$ 使这个递推式可以在 $O(nm2^n)$ 的时间内完成.</p>
-<h3 id="Part-II"><a href="#Part-II" class="headerlink" title="Part II"></a>Part II</h3><p>可以发现,$ \forall S \in \Gamma_{m,Set},cnt_0(S)$ 恒定,所以只需考虑 $s_i=0$ 的位置,给每个位置赋上不属于 $Set$ 的值,并且满足$ \forall i  \notin Set,cnt_i(S)&lt;a_i$ 即可得到一个合法的序列.记这样的方案总数为 $g_{Set}$,则有:</p>
-<script type="math/tex; mode=display">
-ans=\sum f_{m,Set} \cdot g_{Set} \cdot |Set|</script><p>令 $h_{l,Set}$,表示序列 $S’= \{s_1,s_2,\cdots,s_l\}$ 满足:</p>
+<h3 id="Part-II"><a href="#Part-II" class="headerlink" title="Part II"></a>Part II</h3><p>可以发现,$ \forall S \in \Gamma_{m,Set},cnt_0(S)$ 恒定,所以只需考虑 $s_i&#x3D;0$ 的位置,给每个位置赋上不属于 $Set$ 的值,并且满足$ \forall i  \notin Set,cnt_i(S)&lt;a_i$ 即可得到一个合法的序列.记这样的方案总数为 $g_{Set}$,则有:<br>$$<br>ans&#x3D;\sum f_{m,Set} \cdot g_{Set} \cdot |Set|<br>$$</p>
+<p>令 $h_{l,Set}$,表示序列 $S’&#x3D; {s_1,s_2,\cdots,s_l}$ 满足:</p>
 <ol>
 <li>$\forall 1 \le i \le l,s_i \in Set $</li>
 <li>$\forall i \in Set,cnt_i(S’)&lt;a_i $</li>
 </ol>
-<p>的个数,则 $h_{m-|Set|,Set}=g_{Set^{C}}$,所以只要求得 $h_{i,Set}$ 序列即可.</p>
-<p>易得递推式</p>
-<script type="math/tex; mode=display">
-h_{i,Set}=\sum_{k=0}^{\min\{i,a_{low(Set)}-1\}}h_{i-k,Set-{low(Set)}} \cdot \binom{i}{k}</script><p>其中,$low(Set)$,表示 $Set$ 中的最小元素.</p>
+<p>的个数,则 $h_{m-|Set|,Set}&#x3D;g_{Set^{C}}$,所以只要求得 $h_{i,Set}$ 序列即可.</p>
+<p>易得递推式<br>$$<br>h_{i,Set}&#x3D;\sum_{k&#x3D;0}^{\min{i,a_{low(Set)}-1}}h_{i-k,Set-{low(Set)}} \cdot \binom{i}{k}<br>$$<br>其中,$low(Set)$,表示 $Set$ 中的最小元素.</p>
 <p>上述递推可以在 $O(m^2 2^n)$ 的时间内完成.</p>
 <p>综上,问题得解.总时间复杂度为 $O(m(n+m)2^n)$.</p>
 <h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> MAXN=<span class="number">5e4</span>+<span class="number">100</span>;</span><br><span class="line"><span class="type">double</span> fac[MAXN],fav[MAXN],dp[<span class="number">110</span>][MAXN],fir[MAXN][<span class="number">110</span>];</span><br><span class="line"><span class="type">int</span> n,m,dat[MAXN],sum[MAXN],num[MAXN],lower[MAXN];</span><br><span class="line"><span class="function"><span class="type">double</span> <span class="title">qpow</span><span class="params">(<span class="type">double</span> base,<span class="type">int</span> tim)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">double</span> ans=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(tim)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(tim&amp;<span class="number">1</span>) ans*=base;</span><br><span class="line">        base*=base;tim&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    fac[<span class="number">0</span>]=fac[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">    fav[<span class="number">0</span>]=fav[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;<span class="built_in">i</span>&lt;=MAXN<span class="number">-100</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        fac[i]=fac[i<span class="number">-1</span>]*i;</span><br><span class="line">        fav[i]=fav[i<span class="number">-1</span>]/i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">double</span> <span class="title">C</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> fac[b]*fav[a]*fav[b-a];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">double</span> <span class="title">get_dp</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> res)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(fir[x][res]&gt;(<span class="number">1e-8</span>)) <span class="keyword">return</span> fir[x][res];</span><br><span class="line">    <span class="type">int</span> now=lower[x];</span><br><span class="line">    <span class="keyword">if</span>(res==<span class="number">0</span>) fir[x][res]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;=dat[now]<span class="number">-1</span>;i++)</span><br><span class="line">        fir[x][res]+=<span class="built_in">get_dp</span>(x^(<span class="number">1</span>&lt;&lt;now<span class="number">-1</span>),res-i)*<span class="built_in">C</span>(i,res);</span><br><span class="line">    <span class="comment">//cout&lt;&lt;&quot;!!!!&quot;&lt;&lt;now&lt;&lt;&quot; &quot;&lt;&lt;x&lt;&lt;&quot; &quot;&lt;&lt;res&lt;&lt;&quot; &quot;&lt;&lt;fir[x][res]&lt;&lt;endl;</span></span><br><span class="line">    <span class="keyword">return</span> fir[x][res];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m;<span class="built_in">init</span>();</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;dat[i]);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;(<span class="number">1</span>&lt;&lt;n);i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">            <span class="keyword">if</span>(i&amp;(<span class="number">1</span>&lt;&lt;(j<span class="number">-1</span>)))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(lower[i]==<span class="number">0</span>) lower[i]=j;</span><br><span class="line">                <span class="keyword">else</span> lower[i]=<span class="built_in">min</span>(lower[i],j);</span><br><span class="line">                num[i]++;</span><br><span class="line">                sum[i]+=dat[j];</span><br><span class="line">            &#125;</span><br><span class="line">    <span class="keyword">if</span>(sum[(<span class="number">1</span>&lt;&lt;n)<span class="number">-1</span>]==m)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,n);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    dp[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;(<span class="number">1</span>&lt;&lt;n);j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(sum[j]&gt;i) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="comment">//cout&lt;&lt;num[(1&lt;&lt;n)-1]&lt;&lt;&quot; &quot;&lt;&lt;(n-num[j])&lt;&lt;endl;</span></span><br><span class="line">            <span class="keyword">if</span>(i&gt;sum[(<span class="number">1</span>&lt;&lt;n)<span class="number">-1</span>]-(n-num[j])) <span class="keyword">continue</span>;	</span><br><span class="line">            dp[i][j]=dp[i<span class="number">-1</span>][j]/(n-num[j]);</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> k=<span class="number">1</span>;k&lt;=n;k++)</span><br><span class="line">                <span class="keyword">if</span>(j&amp;(<span class="number">1</span>&lt;&lt;(k<span class="number">-1</span>)))</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="type">double</span> p=<span class="number">1.0</span>/(n-num[j^(<span class="number">1</span>&lt;&lt;(k<span class="number">-1</span>))]);<span class="type">int</span> res=i-sum[j^(<span class="number">1</span>&lt;&lt;(k<span class="number">-1</span>))];				</span><br><span class="line">                    dp[i][j]+=dp[i<span class="number">-1</span>][j^(<span class="number">1</span>&lt;&lt;(k<span class="number">-1</span>))]*<span class="built_in">C</span>(dat[k]<span class="number">-1</span>,res<span class="number">-1</span>)*p;</span><br><span class="line">                &#125;</span><br><span class="line">            <span class="comment">//cout&lt;&lt;i&lt;&lt;&quot; &quot;&lt;&lt;j&lt;&lt;&quot; &quot;&lt;&lt;dp[i][j]&lt;&lt;endl;</span></span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//    for(int i=0;i&lt;=(1&lt;&lt;n)-1;i++)</span></span><br><span class="line"><span class="comment">//        printf(&quot;%.3lf &quot;,dp[m][i]);</span></span><br><span class="line"><span class="comment">//    cout&lt;&lt;endl;</span></span><br><span class="line">    fir[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">1</span>&lt;&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> now=lower[i];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;=m;j++)</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> k=<span class="number">0</span>;k&lt;=<span class="built_in">min</span>(dat[now]<span class="number">-1</span>,j);k++)</span><br><span class="line">                fir[i][j]+=fir[i^(<span class="number">1</span>&lt;&lt;(now<span class="number">-1</span>))][j-k]*<span class="built_in">C</span>(k,j);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">double</span> ans=<span class="number">0</span>;<span class="type">int</span> base=(<span class="number">1</span>&lt;&lt;n)<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;(<span class="number">1</span>&lt;&lt;n);i++)</span><br><span class="line">        <span class="keyword">if</span>(m&gt;=sum[i]&amp;&amp;fir[base^i][m-sum[i]]!=<span class="number">0</span>) ans+=num[i]*dp[m][i]*fir[base^i][m-sum[i]];</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%.10lf \n&quot;</span>,ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
   </article>
 
@@ -306,7 +298,7 @@ h_{i,Set}=\sum_{k=0}^{\min\{i,a_{low(Set)}-1\}}h_{i-k,Set-{low(Set)}} \cdot \bin
 
  
 
-<script async src="/js/app.js?v=1654419222651"></script>
+<script async src="/js/app.js?v=1654497613359"></script>
 
 
 
@@ -325,21 +317,6 @@ h_{i,Set}=\sum_{k=0}^{\min\{i,a_{low(Set)}-1\}}h_{i-k,Set-{low(Set)}} \cdot \bin
 
 
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>
