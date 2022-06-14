@@ -6,7 +6,7 @@
     
     <title>Java学习笔记 - PC 的 blog</title>
     <meta charset="UTF-8">
-    <meta name="keywords" content="null">
+    <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
     
     
@@ -34,9 +34,9 @@
         href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"
     />
     
-    <link rel="stylesheet" href="/lib/mdui_043tiny/css/mdui.css?v=1655205515837">
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1655205515837">
-    <link rel="stylesheet" href="/css/style.css?v=1655205515837">
+    <link rel="stylesheet" href="/lib/mdui_043tiny/css/mdui.css?v=1655205840725">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1655205840725">
+    <link rel="stylesheet" href="/css/style.css?v=1655205840725">
      
     
 <meta name="generator" content="Hexo 6.1.0"></head>
@@ -187,7 +187,6 @@
 <li>Java是解释型的。</li>
 </ol>
 <h2 id="对象和类"><a href="#对象和类" class="headerlink" title="对象和类"></a>对象和类</h2><h3 id="标准操作流程"><a href="#标准操作流程" class="headerlink" title="标准操作流程"></a>标准操作流程</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 实例化对象 */</span></span><br><span class="line"><span class="type">Object</span> <span class="variable">referenceVariable</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Constructor</span>();</span><br><span class="line"><span class="comment">/* 访问类中的变量 */</span></span><br><span class="line">referenceVariable.variableName;</span><br><span class="line"><span class="comment">/* 访问类中的方法 */</span></span><br><span class="line">referenceVariable.methodName();</span><br></pre></td></tr></table></figure>
-
 <h3 id="需要注意的规则"><a href="#需要注意的规则" class="headerlink" title="需要注意的规则"></a>需要注意的规则</h3><ul>
 <li>一个源文件中只能有一个 public 类</li>
 <li>一个源文件可以有多个非 public 类</li>
@@ -200,7 +199,7 @@
 <h2 id="import"><a href="#import" class="headerlink" title="import"></a>import</h2><p>import 可以提供一个路径，使得编译器找到路径下的所有类</p>
 <h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>仅记录与 C++ 差别较大的</p>
 <h3 id="byte"><a href="#byte" class="headerlink" title="byte"></a>byte</h3><p>8位有符号整数（-128~127）</p>
-<h3 id="float-amp-double"><a href="#float-amp-double" class="headerlink" title="float&amp;double"></a>float&amp;double</h3><p>字面值的形式为：0.0f &#x2F; 0.0d</p>
+<h3 id="float-amp-double"><a href="#float-amp-double" class="headerlink" title="float&amp;double"></a>float&amp;double</h3><p>字面值的形式为：0.0f / 0.0d</p>
 <h3 id="boolean"><a href="#boolean" class="headerlink" title="boolean"></a>boolean</h3><p>比 bool 难打捏（哭</p>
 <h3 id="char"><a href="#char" class="headerlink" title="char"></a>char</h3><p>16位 Unicode 字符，最小值为 \u0000 ,最大值为  \uffff</p>
 <h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><p>s 要大写捏</p>
@@ -228,7 +227,7 @@
 </ul>
 <h3 id="类变量"><a href="#类变量" class="headerlink" title="类变量"></a>类变量</h3><ul>
 <li>无论一个类创建了多少个对象，类只拥有类变量的一份拷贝。</li>
-<li>静态变量除了被声明为常量外很少使用，静态变量是指声明为 public&#x2F;private，final 和 static 类型的变量。静态变量初始化后不可改变。</li>
+<li>静态变量除了被声明为常量外很少使用，静态变量是指声明为 public/private，final 和 static 类型的变量。静态变量初始化后不可改变。</li>
 <li>静态变量储存在静态存储区。经常被声明为常量，很少单独使用 static 声明变量。</li>
 <li>静态变量在第一次被访问时创建，在程序结束时销毁。</li>
 </ul>
@@ -242,9 +241,8 @@
 <h3 id="gt-gt-gt"><a href="#gt-gt-gt" class="headerlink" title="&gt;&gt;&gt;"></a>&gt;&gt;&gt;</h3><p>右移补零，<del>暂时不知道与普通右移的区别</del></p>
 <h3 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof"></a>instanceof</h3><p>判断一个变量是否是某类型的，比如</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> <span class="string">&quot;Jiaran&quot;</span>;</span><br><span class="line"><span class="type">boolean</span> <span class="variable">result</span> <span class="operator">=</span> name <span class="keyword">instanceof</span> String</span><br></pre></td></tr></table></figure>
-
 <h3 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h3><p>常用的和 C++ 相同，位运算无脑加括号就完了</p>
-<h2 id="循环-x2F-条件结构"><a href="#循环-x2F-条件结构" class="headerlink" title="循环&#x2F;条件结构"></a>循环&#x2F;条件结构</h2><p>与 C++ 同，支持 for(int x : number)</p>
+<h2 id="循环-条件结构"><a href="#循环-条件结构" class="headerlink" title="循环/条件结构"></a>循环/条件结构</h2><p>与 C++ 同，支持 for(int x : number)</p>
 
   </article>
 
@@ -318,7 +316,7 @@
 
  
 
-<script async src="/js/app.js?v=1655205515839"></script>
+<script async src="/js/app.js?v=1655205840726"></script>
 
 
 
@@ -337,21 +335,6 @@
 
 
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>

@@ -6,18 +6,18 @@
     
     <title>基础数论总结 - PC 的 blog</title>
     <meta charset="UTF-8">
-    <meta name="keywords" content="null">
+    <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
     
     
 
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-    <meta name="description" content="GCD&amp;LCM辗转相除求gcd$gcd(x,y)&#x3D;gcd(y,x%y)$ ，易证。 12345int gcd(int x,int y)&amp;#123;    if(!y) return x;    return gcd(y,x%y);&amp;#125;  求lcm$$lcm(x,y) \times gcd(x,y)&#x3D;x \times y$$ $$lcm(x,y)&#x3D;\df">
+    <meta name="description" content="GCD&amp;LCM辗转相除求gcd$gcd(x,y)&#x3D;gcd(y,x\%y)$ ，易证。 12345int gcd(int x,int y)&amp;#123;    if(!y) return x;    return gcd(y,x%y);&amp;#125; 求lcm lcm(x,y) \times gcd(x,y)&#x3D;x \times y lcm(x,y)&#x3D;\dfrac{x\times y}{gcd(x">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基础数论总结">
 <meta property="og:url" content="http://partychicken.github.io/2022/04/20/%E6%95%B0%E8%AE%BA/index.html">
 <meta property="og:site_name" content="PC 的 blog">
-<meta property="og:description" content="GCD&amp;LCM辗转相除求gcd$gcd(x,y)&#x3D;gcd(y,x%y)$ ，易证。 12345int gcd(int x,int y)&amp;#123;    if(!y) return x;    return gcd(y,x%y);&amp;#125;  求lcm$$lcm(x,y) \times gcd(x,y)&#x3D;x \times y$$ $$lcm(x,y)&#x3D;\df">
+<meta property="og:description" content="GCD&amp;LCM辗转相除求gcd$gcd(x,y)&#x3D;gcd(y,x\%y)$ ，易证。 12345int gcd(int x,int y)&amp;#123;    if(!y) return x;    return gcd(y,x%y);&amp;#125; 求lcm lcm(x,y) \times gcd(x,y)&#x3D;x \times y lcm(x,y)&#x3D;\dfrac{x\times y}{gcd(x">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-04-20T03:08:41.000Z">
 <meta property="article:modified_time" content="2022-04-22T13:11:50.828Z">
@@ -33,9 +33,9 @@
         href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"
     />
     
-    <link rel="stylesheet" href="/lib/mdui_043tiny/css/mdui.css?v=1655205515847">
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1655205515847">
-    <link rel="stylesheet" href="/css/style.css?v=1655205515847">
+    <link rel="stylesheet" href="/lib/mdui_043tiny/css/mdui.css?v=1655205840728">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1655205840728">
+    <link rel="stylesheet" href="/css/style.css?v=1655205840728">
      
     
 <meta name="generator" content="Hexo 6.1.0"></head>
@@ -181,78 +181,88 @@
     <a><i class="nexmoefont icon-calendar-fill"></i>2022年04月20日</a>
 </div>
 
-      <h2 id="GCD-amp-LCM"><a href="#GCD-amp-LCM" class="headerlink" title="GCD&amp;LCM"></a>GCD&amp;LCM</h2><h4 id="辗转相除求gcd"><a href="#辗转相除求gcd" class="headerlink" title="辗转相除求gcd"></a>辗转相除求gcd</h4><p>$gcd(x,y)&#x3D;gcd(y,x%y)$ ，易证。</p>
+      <h2 id="GCD-amp-LCM"><a href="#GCD-amp-LCM" class="headerlink" title="GCD&amp;LCM"></a>GCD&amp;LCM</h2><h4 id="辗转相除求gcd"><a href="#辗转相除求gcd" class="headerlink" title="辗转相除求gcd"></a>辗转相除求gcd</h4><p>$gcd(x,y)=gcd(y,x\%y)$ ，易证。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">gcd</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!y) <span class="keyword">return</span> x;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">gcd</span>(y,x%y);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="求lcm"><a href="#求lcm" class="headerlink" title="求lcm"></a>求lcm</h4><p>$$<br>lcm(x,y) \times gcd(x,y)&#x3D;x \times y<br>$$</p>
-<p>$$<br>lcm(x,y)&#x3D;\dfrac{x\times y}{gcd(x,y)}<br>$$</p>
-<p>证明：</p>
-<p>设 $x&#x3D;p\times a$ , $y&#x3D;p \times b$ 且$gcd(a,b)&#x3D;1$ </p>
-<p>则有 $gcd(x,y)&#x3D;p,lcm(x,y)&#x3D;lcm(a,b)\times p$</p>
-<p>$a,b$ 互质 ，故 $lcm(a,b)&#x3D;a\times b ,lcm(x,y)&#x3D;a\times b\times p$</p>
+<h4 id="求lcm"><a href="#求lcm" class="headerlink" title="求lcm"></a>求lcm</h4><script type="math/tex; mode=display">
+lcm(x,y) \times gcd(x,y)=x \times y</script><script type="math/tex; mode=display">
+lcm(x,y)=\dfrac{x\times y}{gcd(x,y)}</script><p>证明：</p>
+<p>设 $x=p\times a$ , $y=p \times b$ 且$gcd(a,b)=1$ </p>
+<p>则有 $gcd(x,y)=p,lcm(x,y)=lcm(a,b)\times p$</p>
+<p>$a,b$ 互质 ，故 $lcm(a,b)=a\times b ,lcm(x,y)=a\times b\times p$</p>
 <p>证毕</p>
-<h2 id="扩展欧几里德-ExGCD"><a href="#扩展欧几里德-ExGCD" class="headerlink" title="扩展欧几里德 ExGCD"></a>扩展欧几里德 ExGCD</h2><p>用于求方程 $ax+by&#x3D;gcd(a,b)$ 的一组解</p>
+<h2 id="扩展欧几里德-ExGCD"><a href="#扩展欧几里德-ExGCD" class="headerlink" title="扩展欧几里德 ExGCD"></a>扩展欧几里德 ExGCD</h2><p>用于求方程 $ax+by=gcd(a,b)$ 的一组解</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">exgcd</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y,<span class="type">int</span> &amp;a,<span class="type">int</span> &amp;b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!y)</span><br><span class="line">    &#123;</span><br><span class="line">        a=<span class="number">1</span>;</span><br><span class="line">        b=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> res=<span class="built_in">exgcd</span>(y,x%y,a,b);</span><br><span class="line">    <span class="type">int</span> tmp=a;</span><br><span class="line">    a=b;</span><br><span class="line">    b=tmp-(x/y)*b;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>注意：代码里的 $x,y,a,b$ 与我所述的是反的</li>
 </ul>
 <p>证明：</p>
-<p>在 $ax+by&#x3D;gcd(a,b)$ 中，</p>
-<p>当 $b&#x3D;0$ 时，</p>
-<p>$$<br>\begin{cases}<br>x&#x3D;1 \<br>y&#x3D;0<br>\end{cases}<br>$$</p>
-<p>显然为方程的一组合法解。</p>
-<p>已知 $bx+(a%b)y&#x3D;gcd(b,a%b)$ 的解，考虑向 $ax’+by’&#x3D;gcd(a,b)$ 的解转移</p>
+<p>在 $ax+by=gcd(a,b)$ 中，</p>
+<p>当 $b=0$ 时，</p>
+<script type="math/tex; mode=display">
+\begin{cases}
+x=1 \\ 
+y=0
+\end{cases}</script><p>显然为方程的一组合法解。</p>
+<p>已知 $bx+(a\%b)y=gcd(b,a\%b)$ 的解，考虑向 $ax’+by’=gcd(a,b)$ 的解转移</p>
 <p>由于</p>
-<p>$$<br>a%b&#x3D;a-\lfloor\dfrac{a}{b}\rfloor\times b<br>$$</p>
-<p>所以可得方程</p>
-<p>$$<br>bx+(a-\lfloor\dfrac{a}{b}\rfloor\times b)y&#x3D;ax’+by’<br>$$</p>
-<p>$$<br>bx+ay-\lfloor\dfrac{a}{b}\rfloor\times by&#x3D;ax’+by’<br>$$</p>
-<p>$$<br>ay+b(x-\lfloor\dfrac{a}{b}\rfloor\times y)&#x3D;ax’+by’<br>$$</p>
-<p>显然一组可行解为</p>
-<p>$$<br>\begin{cases}<br>x’&#x3D;y\<br>y’&#x3D;x-\lfloor \dfrac{a}{b} \rfloor \times y<br>\end{cases}<br>$$</p>
-<p>证毕</p>
-<h3 id="ExGCD求-ax-by-x3D-1"><a href="#ExGCD求-ax-by-x3D-1" class="headerlink" title="ExGCD求$ax+by&#x3D;1$"></a>ExGCD求$ax+by&#x3D;1$</h3><p>用ExGCD解出$ax’+by’&#x3D;gcd(a,b)$的一组解后</p>
-<p>由<br>$$<br>\dfrac {ax’}{gcd(a,b)}+\dfrac{by’}{gcd(a,b)}&#x3D;1<br>$$</p>
-<p>可得</p>
-<p>$$<br>\begin{cases}<br>x&#x3D;\dfrac{x’}{gcd(a,b)}\<br>y&#x3D;\dfrac{y’}{gcd(a,b)}<br>\end{cases}<br>$$</p>
-<p>求得$ax+by&#x3D;1$的一组解后，可由一组解扩展出所有解</p>
+<script type="math/tex; mode=display">
+a\%b=a-\lfloor\dfrac{a}{b}\rfloor\times b</script><p>所以可得方程</p>
+<script type="math/tex; mode=display">
+bx+(a-\lfloor\dfrac{a}{b}\rfloor\times b)y=ax'+by'</script><script type="math/tex; mode=display">
+bx+ay-\lfloor\dfrac{a}{b}\rfloor\times by=ax'+by'</script><script type="math/tex; mode=display">
+ay+b(x-\lfloor\dfrac{a}{b}\rfloor\times y)=ax'+by'</script><p>显然一组可行解为</p>
+<script type="math/tex; mode=display">
+\begin{cases}
+x'=y\\
+y'=x-\lfloor \dfrac{a}{b} \rfloor \times y
+\end{cases}</script><p>证毕</p>
+<h3 id="ExGCD求-ax-by-1"><a href="#ExGCD求-ax-by-1" class="headerlink" title="ExGCD求$ax+by=1$"></a>ExGCD求$ax+by=1$</h3><p>用ExGCD解出$ax’+by’=gcd(a,b)$的一组解后</p>
+<p>由</p>
+<script type="math/tex; mode=display">
+\dfrac {ax'}{gcd(a,b)}+\dfrac{by'}{gcd(a,b)}=1</script><p>可得</p>
+<script type="math/tex; mode=display">
+\begin{cases}
+x=\dfrac{x'}{gcd(a,b)}\\
+y=\dfrac{y'}{gcd(a,b)}
+\end{cases}</script><p>求得$ax+by=1$的一组解后，可由一组解扩展出所有解</p>
 <p>显然</p>
-<p>$$<br>a(x+k\times b)+b(y-k\times a)&#x3D;1<br>$$</p>
-<p>则</p>
-<p>$$<br>\begin{cases}<br>x&#x3D;\dfrac{x’}{gcd(a,b)}+k\times b\<br>y&#x3D;\dfrac{y’}{gcd(a,b)}-k\times a<br>\end{cases}<br>$$</p>
-<p>为$ax+by&#x3D;1$的解的通项</p>
+<script type="math/tex; mode=display">
+a(x+k\times b)+b(y-k\times a)=1</script><p>则</p>
+<script type="math/tex; mode=display">
+\begin{cases}
+x=\dfrac{x'}{gcd(a,b)}+k\times b\\
+y=\dfrac{y'}{gcd(a,b)}-k\times a 
+\end{cases}</script><p>为$ax+by=1$的解的通项</p>
 <h2 id="费马小定理"><a href="#费马小定理" class="headerlink" title="费马小定理"></a>费马小定理</h2><p>如果$p$是质数，且$a$与$p$互质，则有：</p>
-<p>$$<br>a^{p-1}\equiv 1(mod;p)<br>$$</p>
-<h2 id="欧拉定理"><a href="#欧拉定理" class="headerlink" title="欧拉定理"></a>欧拉定理</h2><p>$$<br>a^{\varphi(p)}\equiv 1(mod;p)<br>$$</p>
-<h2 id="乘法逆元"><a href="#乘法逆元" class="headerlink" title="乘法逆元"></a>乘法逆元</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>如果 $ab\equiv 1(mod;p)$ ,则 $a,b$ 互为 $mod;p$ 意义下的乘法逆元</p>
-<p>说明：众所周知，除法是不可膜的。而乘法逆元是为了使除法可膜而诞生的。<br>即$ \dfrac a b\equiv a\times inv(b)(mod;p)$，其中$a$为任意整数。<br>化简可得，$b\times inv(b)\equiv1(mod;p)$</p>
-<h3 id="求法"><a href="#求法" class="headerlink" title="求法"></a>求法</h3><h4 id="费马小定理-1"><a href="#费马小定理-1" class="headerlink" title="费马小定理"></a>费马小定理</h4><p>可用于解决膜数$p$为质数的情况<br>$$a^{p-1}\equiv 1(mod;p)$$<br>$$a\times a^{p-2}\equiv 1(mod;p)$$<br>则$a^{p-2}$即为$a;mod;p$意义下的逆元，快速幂可求</p>
-<h4 id="欧拉定理-1"><a href="#欧拉定理-1" class="headerlink" title="欧拉定理"></a>欧拉定理</h4><p>可用于解决膜数$p$不为质数的情况<br>$$a^{\varphi(p)}\equiv 1(mod;p)$$<br>$$a\times a^{\varphi(p)-1}\equiv 1(mod;p)$$<br>则$a^{\varphi(p)-1}$即为$a;mod;p$意义下的逆元，快速幂可求</p>
-<h4 id="ExGCD"><a href="#ExGCD" class="headerlink" title="ExGCD"></a>ExGCD</h4><p>由<br>$$a\times inv(a)\equiv 1(mod;p)$$</p>
-<p>可得<br>$$a\times inv(a)+p\times y&#x3D;1$$</p>
-<p>Exgcd可求得解</p>
-<p>顺便记录一下自己的智障问题：这样不是会求出很多解吗？<br>答：$inv(a)$的所有解都是$inv(a)+k\times p$,$mod;p$之后都是一样的</p>
-<h4 id="线性递推"><a href="#线性递推" class="headerlink" title="线性递推"></a>线性递推</h4><p>$$inv(i)&#x3D;-(p&#x2F;i)*inv(p%i)$$</p>
-<p>证明：</p>
-<p>设$A&#x3D;\lfloor\dfrac p i\rfloor,B&#x3D;p%i$,则$A\times i+B&#x3D;p$。</p>
-<p>则有<br>$$A\times i+B\equiv 0(mod;p)$$<br>$$i\equiv-\dfrac{B}{A}(mod;p)$$<br>$$i^{-1}\equiv-A\times B^{-1}$$<br>即<br>$$inv(i)&#x3D;-(p&#x2F;i)\times inv(p%i)$$</p>
-<h3 id="阶乘逆元"><a href="#阶乘逆元" class="headerlink" title="阶乘逆元"></a>阶乘逆元</h3><p>可以$O(n)$求出$1!\cdots n!$的逆元，组合数常用</p>
-<p>$$a!\times inv(a!)\equiv1(mod;p)$$<br>$$(a-1)!\times (a\times inv(a!))\equiv1(mod;p)$$</p>
-<p>则</p>
-<p>$$inv((a-1)!)&#x3D;a\times inv(a!)$$</p>
-<p>可以先求出$inv(a!)$,然后推出所有阶乘的逆元</p>
-<h2 id="中国剩余定理-CRT"><a href="#中国剩余定理-CRT" class="headerlink" title="中国剩余定理 CRT"></a>中国剩余定理 CRT</h2><p>设$m_1,m_2,\ldots,m_k$两两互素，则同余方程组</p>
-<p>$$\begin{cases}x \equiv a_1(mod;m_1) \x \equiv a_2(mod;m_2) \\qquad\dots \x \equiv a_k(mod;m_k)\end{cases}$$<br>有整数解;</p>
-<p>并且在$mod;M&#x3D;\prod_{i&#x3D;1}^{k}m_i$意义下有唯一解，为<br>$$x\equiv \sum_{i&#x3D;1}^ka_iM_iinv(M_i)%M$$<br>其中$M_i&#x3D;\dfrac{M}{m_i}$,$inv(M_i)$为$M_i;mod;m_i$意义下的逆元</p>
-<h2 id="扩展中国剩余定理-exCRT"><a href="#扩展中国剩余定理-exCRT" class="headerlink" title="扩展中国剩余定理 exCRT"></a>扩展中国剩余定理 exCRT</h2><p>解同余方程</p>
-<p>$$\begin{cases}x \equiv a_1(mod;m_1) \x \equiv a_2(mod;m_2) \\qquad\dots \x \equiv a_k(mod;m_k)\end{cases}$$</p>
-<p>假设我们已经解出了前 $k-1$ 组解 $x_{k-1}$，那么 $x_k$ 一定为 $x_{k-1}+t\times LCM(m_1,m_2,\cdots m_{k-1})$。</p>
+<script type="math/tex; mode=display">
+a^{p-1}\equiv 1(mod\;p)</script><h2 id="欧拉定理"><a href="#欧拉定理" class="headerlink" title="欧拉定理"></a>欧拉定理</h2><script type="math/tex; mode=display">
+a^{\varphi(p)}\equiv 1(mod\;p)</script><h2 id="乘法逆元"><a href="#乘法逆元" class="headerlink" title="乘法逆元"></a>乘法逆元</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>如果 $ab\equiv 1(mod\;p)$ ,则 $a,b$ 互为 $mod\;p$ 意义下的乘法逆元</p>
+<p>说明：众所周知，除法是不可膜的。而乘法逆元是为了使除法可膜而诞生的。<br>即$ \dfrac a b\equiv a\times inv(b)(mod\;p)$，其中$a$为任意整数。<br>化简可得，$b\times inv(b)\equiv1(mod\;p)$</p>
+<h3 id="求法"><a href="#求法" class="headerlink" title="求法"></a>求法</h3><h4 id="费马小定理-1"><a href="#费马小定理-1" class="headerlink" title="费马小定理"></a>费马小定理</h4><p>可用于解决膜数$p$为质数的情况</p>
+<script type="math/tex; mode=display">a^{p-1}\equiv 1(mod\;p)</script><script type="math/tex; mode=display">a\times a^{p-2}\equiv 1(mod\;p)</script><p>则$a^{p-2}$即为$a\;mod\;p$意义下的逆元，快速幂可求</p>
+<h4 id="欧拉定理-1"><a href="#欧拉定理-1" class="headerlink" title="欧拉定理"></a>欧拉定理</h4><p>可用于解决膜数$p$不为质数的情况</p>
+<script type="math/tex; mode=display">a^{\varphi(p)}\equiv 1(mod\;p)</script><script type="math/tex; mode=display">a\times a^{\varphi(p)-1}\equiv 1(mod\;p)</script><p>则$a^{\varphi(p)-1}$即为$a\;mod\;p$意义下的逆元，快速幂可求</p>
+<h4 id="ExGCD"><a href="#ExGCD" class="headerlink" title="ExGCD"></a>ExGCD</h4><p>由</p>
+<script type="math/tex; mode=display">a\times inv(a)\equiv 1(mod\;p)</script><p>可得</p>
+<script type="math/tex; mode=display">a\times inv(a)+p\times y=1</script><p>Exgcd可求得解</p>
+<p>顺便记录一下自己的智障问题：这样不是会求出很多解吗？<br>答：$inv(a)$的所有解都是$inv(a)+k\times p$,$mod\;p$之后都是一样的</p>
+<h4 id="线性递推"><a href="#线性递推" class="headerlink" title="线性递推"></a>线性递推</h4><script type="math/tex; mode=display">inv(i)=-(p/i)*inv(p\%i)</script><p>证明：</p>
+<p>设$A=\lfloor\dfrac p i\rfloor,B=p\%i$,则$A\times i+B=p$。</p>
 <p>则有</p>
-<p>$$x_{k-1}+t\times LCM(m_1,m_2,\cdots m_{k-1})\equiv a_k(mod;m_k)$$</p>
-<p>用 exgcd 解同余方程即可。</p>
-<h2 id="扩展欧拉定理"><a href="#扩展欧拉定理" class="headerlink" title="扩展欧拉定理"></a>扩展欧拉定理</h2><p>$$<br>a^b\equiv a^{b%\varphi(n)+\varphi(n)}(mod;n)<br>$$</p>
-
+<script type="math/tex; mode=display">A\times i+B\equiv 0(mod\;p)</script><script type="math/tex; mode=display">i\equiv-\dfrac{B}{A}(mod\;p)</script><script type="math/tex; mode=display">i^{-1}\equiv-A\times B^{-1}</script><p>即</p>
+<script type="math/tex; mode=display">inv(i)=-(p/i)\times inv(p\%i)</script><h3 id="阶乘逆元"><a href="#阶乘逆元" class="headerlink" title="阶乘逆元"></a>阶乘逆元</h3><p>可以$O(n)$求出$1!\cdots n!$的逆元，组合数常用</p>
+<script type="math/tex; mode=display">a!\times inv(a!)\equiv1(mod\;p)</script><script type="math/tex; mode=display">(a-1)!\times (a\times inv(a!))\equiv1(mod\;p)</script><p>则</p>
+<script type="math/tex; mode=display">inv((a-1)!)=a\times inv(a!)</script><p>可以先求出$inv(a!)$,然后推出所有阶乘的逆元</p>
+<h2 id="中国剩余定理-CRT"><a href="#中国剩余定理-CRT" class="headerlink" title="中国剩余定理 CRT"></a>中国剩余定理 CRT</h2><p>设$m_1,m_2,\ldots,m_k$两两互素，则同余方程组</p>
+<script type="math/tex; mode=display">\begin{cases}x \equiv a_1(mod\;m_1) \\x \equiv a_2(mod\;m_2) \\\qquad\dots \\x \equiv a_k(mod\;m_k)\end{cases}</script><p>有整数解;</p>
+<p>并且在$mod\;M=\prod_{i=1}^{k}m_i$意义下有唯一解，为</p>
+<script type="math/tex; mode=display">x\equiv \sum_{i=1}^ka_iM_iinv(M_i)\%M</script><p>其中$M_i=\dfrac{M}{m_i}$,$inv(M_i)$为$M_i\;mod\;m_i$意义下的逆元</p>
+<h2 id="扩展中国剩余定理-exCRT"><a href="#扩展中国剩余定理-exCRT" class="headerlink" title="扩展中国剩余定理 exCRT"></a>扩展中国剩余定理 exCRT</h2><p>解同余方程</p>
+<script type="math/tex; mode=display">\begin{cases}x \equiv a_1(mod\;m_1) \\x \equiv a_2(mod\;m_2) \\\qquad\dots \\x \equiv a_k(mod\;m_k)\end{cases}</script><p>假设我们已经解出了前 $k-1$ 组解 $x_{k-1}$，那么 $x_k$ 一定为 $x_{k-1}+t\times LCM(m_1,m_2,\cdots m_{k-1})$。</p>
+<p>则有</p>
+<script type="math/tex; mode=display">x_{k-1}+t\times LCM(m_1,m_2,\cdots m_{k-1})\equiv a_k(mod\;m_k)</script><p>用 exgcd 解同余方程即可。</p>
+<h2 id="扩展欧拉定理"><a href="#扩展欧拉定理" class="headerlink" title="扩展欧拉定理"></a>扩展欧拉定理</h2><script type="math/tex; mode=display">
+a^b\equiv a^{b\%\varphi(n)+\varphi(n)}(mod\;n)</script>
   </article>
 
   
@@ -329,7 +339,7 @@
 
  
 
-<script async src="/js/app.js?v=1655205515849"></script>
+<script async src="/js/app.js?v=1655205840729"></script>
 
 
 
@@ -348,21 +358,6 @@
 
 
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>
