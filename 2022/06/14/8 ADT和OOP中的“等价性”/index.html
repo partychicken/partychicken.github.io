@@ -6,27 +6,27 @@
     
     <title>ADT和OOP中的“等价性” - PC 的 blog</title>
     <meta charset="UTF-8">
-    <meta name="keywords" content="">
+    <meta name="keywords" content="null">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
     
     
 
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-    <meta name="description" content="8 ADT和OOP中的“等价性”Equivalence Relation等价关系：自反、对称、传递 For a boolean-valued binary operation like &#x3D;&#x3D; or equals(), the equivalence E is the set of pairs (x,y) for which the operation returns true.">
+    <meta name="description" content="8 ADT和OOP中的“等价性”Equivalence Relation等价关系：自反、对称、传递 For a boolean-valued binary operation like &#x3D;&#x3D; or equals(), the equivalence E is the set of pairs (x,y) for which the operation returns true.  Equality">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ADT和OOP中的“等价性”">
 <meta property="og:url" content="http://partychicken.github.io/2022/06/14/8%20ADT%E5%92%8COOP%E4%B8%AD%E7%9A%84%E2%80%9C%E7%AD%89%E4%BB%B7%E6%80%A7%E2%80%9D/index.html">
 <meta property="og:site_name" content="PC 的 blog">
-<meta property="og:description" content="8 ADT和OOP中的“等价性”Equivalence Relation等价关系：自反、对称、传递 For a boolean-valued binary operation like &#x3D;&#x3D; or equals(), the equivalence E is the set of pairs (x,y) for which the operation returns true.">
+<meta property="og:description" content="8 ADT和OOP中的“等价性”Equivalence Relation等价关系：自反、对称、传递 For a boolean-valued binary operation like &#x3D;&#x3D; or equals(), the equivalence E is the set of pairs (x,y) for which the operation returns true.  Equality">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://partychicken.github.io/image-20220611170501802.png">
+<meta property="og:image" content="http://partychicken.github.io/2022/06/14/8%20ADT%E5%92%8COOP%E4%B8%AD%E7%9A%84%E2%80%9C%E7%AD%89%E4%BB%B7%E6%80%A7%E2%80%9D/image-20220611170501802.png">
 <meta property="og:image" content="http://partychicken.github.io/2022/06/14/8%20ADT%E5%92%8COOP%E4%B8%AD%E7%9A%84%E2%80%9C%E7%AD%89%E4%BB%B7%E6%80%A7%E2%80%9D/image-20220611182649902.png">
-<meta property="og:image" content="http://partychicken.github.io/image-20220611182722006.png">
+<meta property="og:image" content="http://partychicken.github.io/2022/06/14/8%20ADT%E5%92%8COOP%E4%B8%AD%E7%9A%84%E2%80%9C%E7%AD%89%E4%BB%B7%E6%80%A7%E2%80%9D/image-20220611182722006.png">
 <meta property="article:published_time" content="2022-06-14T09:34:00.000Z">
-<meta property="article:modified_time" content="2022-06-14T11:29:18.404Z">
+<meta property="article:modified_time" content="2022-06-14T11:36:37.080Z">
 <meta property="article:author" content="partychicken">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://partychicken.github.io/image-20220611170501802.png">
+<meta name="twitter:image" content="http://partychicken.github.io/2022/06/14/8%20ADT%E5%92%8COOP%E4%B8%AD%E7%9A%84%E2%80%9C%E7%AD%89%E4%BB%B7%E6%80%A7%E2%80%9D/image-20220611170501802.png">
     <link
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css"
@@ -36,9 +36,9 @@
         href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"
     />
     
-    <link rel="stylesheet" href="/lib/mdui_043tiny/css/mdui.css?v=1655206346312">
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1655206346312">
-    <link rel="stylesheet" href="/css/style.css?v=1655206346312">
+    <link rel="stylesheet" href="/lib/mdui_043tiny/css/mdui.css?v=1655206611157">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1655206611157">
+    <link rel="stylesheet" href="/css/style.css?v=1655206611157">
      
     
 <meta name="generator" content="Hexo 6.1.0"></head>
@@ -66,7 +66,7 @@
     <div class="nexmoe-count">
         <div><span>Articles</span>13</div>
         <div><span>Tags</span>3</div>
-        <div><span>Categories</span>2</div>
+        <div><span>Categories</span>3</div>
     </div>
     <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
         
@@ -143,6 +143,13 @@
         </li>
 
         
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/软件构造/">软件构造</a>
+          <span class="category-list-count">9</span>
+        </li>
+
+        
       </ul>
 
     </div>
@@ -185,17 +192,17 @@
 </div>
 
       <h1 id="8-ADT和OOP中的“等价性”"><a href="#8-ADT和OOP中的“等价性”" class="headerlink" title="8 ADT和OOP中的“等价性”"></a>8 ADT和OOP中的“等价性”</h1><h2 id="Equivalence-Relation"><a href="#Equivalence-Relation" class="headerlink" title="Equivalence Relation"></a>Equivalence Relation</h2><p>等价关系：自反、对称、传递</p>
-<p>For a boolean-valued binary operation like &#x3D;&#x3D; or equals(), the equivalence E is the set of pairs (x,y) for which the operation returns true. </p>
+<p>For a boolean-valued binary operation like == or equals(), the equivalence E is the set of pairs (x,y) for which the operation returns true. </p>
 <h2 id="Equality-of-Immutable-Types"><a href="#Equality-of-Immutable-Types" class="headerlink" title="Equality of Immutable Types"></a>Equality of Immutable Types</h2><p>Using AF to define the quality, AF映射到同样的结果，则等价</p>
 <ul>
 <li>An equivalence relation induces an abstraction function (the  relation partitions T, so f maps each element to its partition class).  </li>
 <li>The relation induced by an abstraction function is an equivalence  relation.</li>
 </ul>
 <p>站在外部观察者角度：对两个对象调用任何相同的操作，都会得到相同的结果，则认为这两个对象是等价的。反之亦然！</p>
-<h2 id="x3D-x3D-vs-equals"><a href="#x3D-x3D-vs-equals" class="headerlink" title="&#x3D;&#x3D; vs. equals()"></a>&#x3D;&#x3D; vs. equals()</h2><p>The &#x3D;&#x3D; operator compares references. It tests referential equality.</p>
+<h2 id="vs-equals"><a href="#vs-equals" class="headerlink" title="== vs. equals()"></a>== vs. equals()</h2><p>The == operator compares references. It tests referential equality.</p>
 <p>The equals() operation compares object contents – in other words, object equality.</p>
 <p>在自定义ADT时，需要重写Object的equals()。</p>
-<p>&#x3D;&#x3D; 对基本数据类型，使用&#x3D;&#x3D;判定相等</p>
+<p>== 对基本数据类型，使用==判定相等</p>
 <p>对对象类型，使用equals()</p>
 <h2 id="Implementing-equals"><a href="#Implementing-equals" class="headerlink" title="Implementing equals()"></a>Implementing equals()</h2><p>在Object中实现的缺省equals()是在判断引用等价性，这通常不是程序员所期望的。因此，需要重写。</p>
 <p>注意区分Overload和override，重写时要使用 <em>@Override</em> ，编译器会检查超类中是否含有相同签名的函数。</p>
@@ -203,7 +210,7 @@
 <h2 id="The-Object-contract"><a href="#The-Object-contract" class="headerlink" title="The Object contract"></a>The Object contract</h2><p>除非对象被修改了，否则调用多次equals应同样的结果</p>
 <p>“相等”的对象，其 hashCode() 的结果必须 一致</p>
 <p>Object ’s default hashCode() implementation is consistent with  its default equals()</p>
-<p><img data-fancybox="gallery" src="/image-20220611170501802.png" alt="image-20220611170501802" data-caption="image-20220611170501802" loading="lazy"></p>
+<p><img data-fancybox="gallery" src="image-20220611170501802.png" alt="image-20220611170501802" data-caption="image-20220611170501802" loading="lazy"></p>
 <p>The standard is to compute a hash code for each component of the object that is used in the determination of equality (usually by calling the hashCode method of each component), and then combining these, throwing in a few arithmetic operations. </p>
 <p><strong>Always override hashCode() when you override equals()</strong></p>
 <h2 id="Equality-of-Mutable-Types"><a href="#Equality-of-Mutable-Types" class="headerlink" title="Equality of Mutable Types"></a>Equality of Mutable Types</h2><p>观察等价性：在不改变状态的情况下，两个mutable对象是否看起来一致</p>
@@ -212,9 +219,8 @@
 <p>也就是说，只有指向同样内存空间的objects，才是相等的。</p>
 <p>所以对可变类型来说，无需重写这两个函数，直接继承Object的两个方法即可。</p>
 <p>如果一定要判断两个可变对象看起来是否一致，最好定义一个新的方法。</p>
-<h2 id="Autoboxing-and-Equality"><a href="#Autoboxing-and-Equality" class="headerlink" title="Autoboxing and Equality"></a>Autoboxing and Equality</h2><img data-fancybox="gallery" src="image-20220611182649902.png" alt="image-20220611182649902" data-caption="image-20220611182649902" loading="lazy">
-
-<p><img data-fancybox="gallery" src="/image-20220611182722006.png" alt="image-20220611182722006" data-caption="image-20220611182722006" loading="lazy"></p>
+<h2 id="Autoboxing-and-Equality"><a href="#Autoboxing-and-Equality" class="headerlink" title="Autoboxing and Equality"></a>Autoboxing and Equality</h2><p><img data-fancybox="gallery" src="image-20220611182649902.png" alt="image-20220611182649902" data-caption="image-20220611182649902" loading="lazy"></p>
+<p><img data-fancybox="gallery" src="image-20220611182722006.png" alt="image-20220611182722006" data-caption="image-20220611182722006" loading="lazy"></p>
 
   </article>
 
@@ -232,6 +238,8 @@
   
   
   <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0/">软件构造</a>
     
     
 </div>
@@ -288,7 +296,7 @@
 
  
 
-<script async src="/js/app.js?v=1655206346314"></script>
+<script async src="/js/app.js?v=1655206611160"></script>
 
 
 
@@ -307,6 +315,21 @@
 
 
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>
