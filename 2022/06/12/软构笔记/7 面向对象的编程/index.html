@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    
+    <title>PC 的 blog</title>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="null">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    
+    
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <meta name="description" content="7 面向对象的编程Basic concepts: object, class,  attribute, and methodClass variable 类成员变量: a variable associated with the class rather than with an instance of the class. You can also associate methods with">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PC 的 blog">
+<meta property="og:url" content="http://partychicken.github.io/2022/06/12/%E8%BD%AF%E6%9E%84%E7%AC%94%E8%AE%B0/7%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%BC%96%E7%A8%8B/index.html">
+<meta property="og:site_name" content="PC 的 blog">
+<meta property="og:description" content="7 面向对象的编程Basic concepts: object, class,  attribute, and methodClass variable 类成员变量: a variable associated with the class rather than with an instance of the class. You can also associate methods with">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://partychicken.github.io/image-20220609213156643.png">
+<meta property="og:image" content="http://partychicken.github.io/image-20220609221405439.png">
+<meta property="og:image" content="http://partychicken.github.io/image-20220610165359890.png">
+<meta property="og:image" content="http://partychicken.github.io/image-20220610165710869.png">
+<meta property="og:image" content="http://partychicken.github.io/image-20220610184458199.png">
+<meta property="og:image" content="http://partychicken.github.io/image-20220610193454254.png">
+<meta property="og:image" content="http://partychicken.github.io/2022/06/12/%E8%BD%AF%E6%9E%84%E7%AC%94%E8%AE%B0/7%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%BC%96%E7%A8%8B/image-20220610194847358.png">
+<meta property="og:image" content="http://partychicken.github.io/image-20220610195909895.png">
+<meta property="og:image" content="http://partychicken.github.io/image-20220610202757431.png">
+<meta property="article:published_time" content="2022-06-12T09:45:41.280Z">
+<meta property="article:modified_time" content="2022-06-11T00:06:09.442Z">
+<meta property="article:author" content="partychicken">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://partychicken.github.io/image-20220609213156643.png">
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css"
+    />
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"
+    />
+    
+    <link rel="stylesheet" href="/lib/mdui_043tiny/css/mdui.css?v=1655205515817">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1655205515817">
+    <link rel="stylesheet" href="/css/style.css?v=1655205515817">
+     
+    
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body class="mdui-drawer-body-left">
+    
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(https://s1.ax1x.com/2022/04/20/LDz59K.jpg)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="partychicken" class="mdui-btn mdui-btn-icon"><img src="https://avatars.githubusercontent.com/u/44670668?s=400&amp;v=4" alt="partychicken"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="partychicken">
+            <img src="https://avatars.githubusercontent.com/u/44670668?s=400&amp;v=4" alt="partychicken" alt="partychicken">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>Articles</span>13</div>
+        <div><span>Tags</span>3</div>
+        <div><span>Categories</span>2</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about.html" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/PY.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+         
+            <form id="search_form" action_e="https://cn.bing.com/search?q=site:nexmoe.com" onsubmit="return search();">
+                <label><input id="search_value" name="q" type="search" placeholder="Search"></label>
+            </form>
+         
+    </div>
+</div>
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="/null" target="_blank" mdui-tooltip="{content: 'QQ群'}" style="color: rgb(249, 174, 8);background-color: rgba(249, 174, 8, .1);">
+            <i class="nexmoefont icon-QQ"></i>
+        </a><a class="mdui-ripple" href="https://space.bilibili.com/" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/partychicken/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Categories</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/ACM/">ACM</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/ICS/">ICS</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/dp/" style="font-size: 10px;">dp</a> <a href="/tags/%E6%95%B0%E8%AE%BA/" style="font-size: 10px;">数论</a> <a href="/tags/%E6%9C%9F%E6%9C%9B/" style="font-size: 10px;">期望</a>
+    </div>
+    
+  </div>
+
+    
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2022 partychicken
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+      
+          <div class="nexmoe-post-cover" style="padding-bottom: 66.66666666666666%;"> 
+              <img data-fancybox="gallery" src="https://s1.ax1x.com/2022/04/20/LDz59K.jpg" alt="" loading="lazy">
+              <h1></h1>
+          </div>
+      
+      
+      <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2022年06月12日</a>
+</div>
+
+      <h1 id="7-面向对象的编程"><a href="#7-面向对象的编程" class="headerlink" title="7 面向对象的编程"></a>7 面向对象的编程</h1><h2 id="Basic-concepts-object-class-attribute-and-method"><a href="#Basic-concepts-object-class-attribute-and-method" class="headerlink" title="Basic concepts: object, class,  attribute, and method"></a>Basic concepts: object, class,  attribute, and method</h2><p><strong>Class variable 类成员变量</strong>: a variable associated with the class rather than with an instance of the class. You can also associate methods with a class–<strong>class methods类方法</strong></p>
+<p>Methods and variables that are not class methods or class variables are known as <strong>instance methods 实例方法</strong> and <strong>instance variables 实例成员变量</strong>.</p>
+<p><img data-fancybox="gallery" src="/image-20220609213156643.png" alt="image-20220609213156643" data-caption="image-20220609213156643" loading="lazy"></p>
+<h2 id="Interface"><a href="#Interface" class="headerlink" title="Interface"></a>Interface</h2><ul>
+<li>Interface和Class: 定义和实现ADT </li>
+<li>接口之间可以继承与扩展 </li>
+<li>一个类可以实现多个接口（从而具备了多个接口中的方法） </li>
+<li>一个接口可以有多种实现类</li>
+</ul>
+<p>接口：确定ADT规约；类：实现ADT</p>
+<p>也可以不需要接口直接使用类作为ADT，既有ADT定义也有ADT实现</p>
+<p>实际中更倾向于使用接口来定义变量</p>
+<p>Using static factory instead of constructor</p>
+<p>接口中的每个方法在所有类中都要实现，可以通过default方法，在接口中统一实现某些功能，无需在各个类中重复实现它。</p>
+<p><img data-fancybox="gallery" src="/image-20220609221405439.png" alt="image-20220609221405439" data-caption="image-20220609221405439" loading="lazy"></p>
+<h2 id="Inheritance-and-Overriding"><a href="#Inheritance-and-Overriding" class="headerlink" title="Inheritance and Overriding"></a>Inheritance and Overriding</h2><h3 id="Overriding"><a href="#Overriding" class="headerlink" title="Overriding"></a>Overriding</h3><p>Rewriteable Method: A method which allow a re-implementation. </p>
+<p>Strict inheritance 严格继承：子类只能添加新方法，无法重写超类中的方法 (用final修饰)</p>
+<h4 id="Strict-inheritance"><a href="#Strict-inheritance" class="headerlink" title="Strict inheritance"></a>Strict inheritance</h4><p><img data-fancybox="gallery" src="/image-20220610165359890.png" alt="image-20220610165359890" data-caption="image-20220610165359890" loading="lazy"></p>
+<h3 id="Overriding-1"><a href="#Overriding-1" class="headerlink" title="Overriding"></a>Overriding</h3><p>Method overriding is a language feature that allows a subclass or child class to provide a specific implementation of a method that is already provided by one of its superclasses or parent classes.</p>
+<p>重写的函数：完全同样的signature</p>
+<p>实际执行时调用哪个方法，运行时决定。</p>
+<p><img data-fancybox="gallery" src="/image-20220610165710869.png" alt="image-20220610165710869" data-caption="image-20220610165710869" loading="lazy"></p>
+<p>如果父类型中的某个函数实现体为空 意味着其所有子类型都需要这个功能，但各有差异，没有共性，在每个子类中均需要重写。</p>
+<p>When a subclass contains a method that overrides a method of the superclass, it can also invoke the superclass method by using the keyword <strong>super</strong>.</p>
+<p>Bad Use of Overwriting Methods: 重写的时候，不要改变原方法的本意</p>
+<h3 id="Abstract-Class"><a href="#Abstract-Class" class="headerlink" title="Abstract Class"></a>Abstract Class</h3><p>Abstract method:</p>
+<ul>
+<li>A method with a signature but without an implementation (also called abstract operation)</li>
+<li>Defined by the keyword <strong>abstract</strong></li>
+</ul>
+<p>Abstract class:  A class which contains at least one abstract method is called abstract class</p>
+<p>Interface: An abstract class which has only abstract methods </p>
+<ul>
+<li>An interface is primarily used for the specification of a system or subsystem. The implementation is provided by a subclass or by other mechanisms.</li>
+</ul>
+<p>如果某些操作是所有子类型都共有，但彼此有差别，可以在父类型中设计抽象方法，在各子类型中重写</p>
+<p>所有子类型完全相同的操作，放在父类型中实现，子类型中无需重写。</p>
+<p>有些子类型有而其他子类型无的操作，不要在父类型中定义和实现，而应在特定子类型中实现。</p>
+<h2 id="Polymorphism-subtyping-and-overloading"><a href="#Polymorphism-subtyping-and-overloading" class="headerlink" title="Polymorphism, subtyping and overloading"></a>Polymorphism, subtyping and overloading</h2><h3 id="Three-Types-of-Polymorphism"><a href="#Three-Types-of-Polymorphism" class="headerlink" title="Three Types of Polymorphism"></a>Three Types of Polymorphism</h3><p>Ad hoc polymorphism (特殊多态)：when a function denotes different and potentially heterogeneous implementations depending on a limited range of individually specified types and combinations.</p>
+<p>Parametric polymorphism (参数化多态): when code is written  without mention of any specific type and thus can be used  transparently with any number of new types.(often known as generics or generic  programming <strong>泛型</strong>)</p>
+<p>Subtyping (also called subtype polymorphism or inclusion polymorphism 子类型多态、包含多态): when a name denotes instances of many different classes related by some common superclass.</p>
+<h3 id="Ad-hoc-polymorphism-and-Overloading"><a href="#Ad-hoc-polymorphism-and-Overloading" class="headerlink" title="Ad hoc polymorphism and Overloading"></a>Ad hoc polymorphism and Overloading</h3><p>Ad-hoc polymorphism is obtained when a function works on several different types (which may not exhibit a common structure) and may behave in unrelated ways for each type.</p>
+<p><img data-fancybox="gallery" src="/image-20220610184458199.png" alt="image-20220610184458199" data-caption="image-20220610184458199" loading="lazy"></p>
+<ul>
+<li><p>重载：多个方法具有同样的名字，但有不同的参数列表或返回值类型 </p>
+</li>
+<li><p>价值：方便client调用，client可用不同的参数列表，调用同样的函数</p>
+</li>
+</ul>
+<p>Overloading is a static polymorphism</p>
+<ul>
+<li>根据参数列表进行最佳匹配</li>
+<li>静态类型检查</li>
+<li>在编译阶段时决定要具体执行哪个方法<ul>
+<li>与之相反，overridden methods则是在run-time进行dynamic checking！</li>
+</ul>
+</li>
+</ul>
+<p>Overloading rules:</p>
+<ul>
+<li>MUST change the argument list. 不同的参数列表</li>
+<li>CAN change the return type. 相同&#x2F;不同的返回值类型 </li>
+<li>CAN change the access modifier. 相同&#x2F;不同的 public&#x2F;private&#x2F;protected </li>
+<li>CAN declare new or broader checked exceptions. 异常 </li>
+<li>A method can be overloaded in the same class or in a subclass. 可以在同一个类内重载，也可在子类中重载</li>
+</ul>
+<h3 id="Overriding-vs-Overloading"><a href="#Overriding-vs-Overloading" class="headerlink" title="Overriding vs. Overloading"></a>Overriding vs. Overloading</h3><p><img data-fancybox="gallery" src="/image-20220610193454254.png" alt="image-20220610193454254" data-caption="image-20220610193454254" loading="lazy"></p>
+<h3 id="Parametric-polymorphism-and-Generic-programming"><a href="#Parametric-polymorphism-and-Generic-programming" class="headerlink" title="Parametric polymorphism and  Generic programming"></a>Parametric polymorphism and  Generic programming</h3><p>Parametric polymorphism is obtained when a function works uniformly on a range of types; these types normally exhibit some common structure. </p>
+<p>Generic programming is a style of programming in which data types and functions are written in terms of <strong>types to-be-specified-later</strong> that are then instantiated when needed for specific types provided as parameters.</p>
+<p>Suppose we want to implement the generic Set interface.</p>
+<ol>
+<li>泛型接口，非泛型的实现类</li>
+<li>泛型接口，泛型的实现类</li>
+</ol>
+<img data-fancybox="gallery" src="image-20220610194847358.png" alt="image-20220610194847358" data-caption="image-20220610194847358" loading="lazy">
+
+<h3 id="Subtyping-Polymorphism"><a href="#Subtyping-Polymorphism" class="headerlink" title="Subtyping Polymorphism"></a>Subtyping Polymorphism</h3><p><img data-fancybox="gallery" src="/image-20220610195909895.png" alt="image-20220610195909895" data-caption="image-20220610195909895" loading="lazy"></p>
+<p>Benefits of inheritance&#x2F;subtype: Reuse of code, Modeling flexibility</p>
+<p>In Java: Each class can directly extend only one parent class; A class can implement multiple interfaces.</p>
+<ul>
+<li><p>“B is a subtype of A” means “every B is an A.”  </p>
+</li>
+<li><p>In terms of specifications: “every B satisfies the specification for A.”</p>
+</li>
+</ul>
+<p>If you declare a subtype in Java (e.g., implementing an interface), then you must ensure that the subtype’s spec is at least as strong as the supertype’s.子类型的规约不能弱化超类型的规约。</p>
+<p>子类型多态：不同类型的对象可以统一的处理而无需区分</p>
+<p>Each object behaves according to its type (e.g., if you add new kind  of account, client code does not change) 从而隔离了“变化”</p>
+<h4 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof"></a>instanceof</h4><p>Operator that tests whether an object is of a given class</p>
+<p><img data-fancybox="gallery" src="/image-20220610202757431.png" alt="image-20220610202757431" data-caption="image-20220610202757431" loading="lazy"></p>
+<p>Advice: avoid instanceof() if possible, and never(?) use instanceof() in a superclass to check type against subclass.</p>
+<h2 id="Some-important-Object-methods-in-Java"><a href="#Some-important-Object-methods-in-Java" class="headerlink" title="Some important Object methods in Java"></a>Some important Object methods in Java</h2><h3 id="Overriding-Object-method"><a href="#Overriding-Object-method" class="headerlink" title="Overriding Object method"></a>Overriding Object method</h3><ul>
+<li><p>equals() – true if the two objects are “equal” </p>
+</li>
+<li><p>hashCode() – a hash code for use in hash maps </p>
+</li>
+<li><p>toString() – a printable string representation </p>
+</li>
+<li><p>toString() – ugly and uninformative </p>
+<ul>
+<li><p>You know what your object is so you can do better </p>
+</li>
+<li><p>Always override unless you know in won’t be called</p>
+</li>
+</ul>
+</li>
+<li><p>equals &amp; hashCode – identity semantics </p>
+<ul>
+<li>You must override if you want value semantics </li>
+<li>Otherwise don’t</li>
+</ul>
+</li>
+</ul>
+<h2 id="Designing-good-classes"><a href="#Designing-good-classes" class="headerlink" title="Designing good classes"></a>Designing good classes</h2><h3 id="Advantages-of-immutable-classes"><a href="#Advantages-of-immutable-classes" class="headerlink" title="Advantages of immutable classes"></a>Advantages of immutable classes</h3><ul>
+<li>Simplicity </li>
+<li>Inherently Thread-Safe </li>
+<li>Can be shared freely </li>
+<li>No need for defensive copies </li>
+<li>Excellent building blocks</li>
+</ul>
+<h3 id="How-to-write-an-immutable-class"><a href="#How-to-write-an-immutable-class" class="headerlink" title="How to write an immutable class"></a>How to write an immutable class</h3><ul>
+<li>Don’t provide any mutators </li>
+<li>Ensure that no methods may be overridden </li>
+<li>Make all fields final </li>
+<li>Make all fields private </li>
+<li>Ensure security of any mutable components (avoid rep exposure) </li>
+<li>Implement toString(), hashCode(), clone(), equals(), etc.</li>
+</ul>
+<p>Q: When to make classes immutable? </p>
+<p>A: Always, unless there’s a good reason not to</p>
+<p>Always make small “value classes” immutable! </p>
+
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>Author：</strong>partychicken<br>
+        <strong>Link：</strong><a href="http://partychicken.github.io/2022/06/12/%E8%BD%AF%E6%9E%84%E7%AC%94%E8%AE%B0/7%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%BC%96%E7%A8%8B/" title="http:&#x2F;&#x2F;partychicken.github.io&#x2F;2022&#x2F;06&#x2F;12&#x2F;%E8%BD%AF%E6%9E%84%E7%AC%94%E8%AE%B0&#x2F;7%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%BC%96%E7%A8%8B&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;partychicken.github.io&#x2F;2022&#x2F;06&#x2F;12&#x2F;%E8%BD%AF%E6%9E%84%E7%AC%94%E8%AE%B0&#x2F;7%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%BC%96%E7%A8%8B&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+    
+</div>
+
+  
+      <div class="nexmoe-post-footer">
+          <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '80b2453b6d5f37ad6225',
+        clientSecret: '43e99fa852795c9a7b3eb924b2558c64b84bbdeb',
+        id: window.location.pathname,
+        repo: 'partychicken.github.io',
+        owner: 'partychicken',
+        admin: 'partychicken'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+      </div>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+     
+    <div id="nexmoe-search-space">
+        <div class="search-container">
+            <div class="search-header">
+                <div class="search-input-container">
+                    <input class="search-input" type="text" placeholder="Search" oninput="sinput();">
+                </div>
+                <a class="search-close" onclick="sclose();">×</a>
+            </div>
+            <div class="search-body"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+ 
+
+<script async src="/js/app.js?v=1655205515819"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+
+    
+
+
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+
+</html>

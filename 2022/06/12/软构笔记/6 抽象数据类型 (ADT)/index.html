@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    
+    <title>PC 的 blog</title>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="null">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    
+    
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <meta name="description" content="6 抽象数据类型 (ADT)抽象数据类型与表示独立性：如何设计良好的抽象数据结构，通过封装来避免客户端获取数据的内部表示（即“表示泄露”），避免潜在 的bug——在client和implementer之间建立“防火墙” ADT的特性：表示泄漏、抽象函数AF、表示不变量RI 基于数学的形式对ADT的这些核心特征进行描述并应用于设计中。 Abstraction and User-Defined Typ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PC 的 blog">
+<meta property="og:url" content="http://partychicken.github.io/2022/06/12/%E8%BD%AF%E6%9E%84%E7%AC%94%E8%AE%B0/6%20%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%20(ADT)/index.html">
+<meta property="og:site_name" content="PC 的 blog">
+<meta property="og:description" content="6 抽象数据类型 (ADT)抽象数据类型与表示独立性：如何设计良好的抽象数据结构，通过封装来避免客户端获取数据的内部表示（即“表示泄露”），避免潜在 的bug——在client和implementer之间建立“防火墙” ADT的特性：表示泄漏、抽象函数AF、表示不变量RI 基于数学的形式对ADT的这些核心特征进行描述并应用于设计中。 Abstraction and User-Defined Typ">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://partychicken.github.io/2022/06/12/%E8%BD%AF%E6%9E%84%E7%AC%94%E8%AE%B0/6%20%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%20(ADT)/image-20220609200207104.png">
+<meta property="og:image" content="http://partychicken.github.io/2022/06/12/%E8%BD%AF%E6%9E%84%E7%AC%94%E8%AE%B0/6%20%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%20(ADT)/image-20220609200215955.png">
+<meta property="og:image" content="http://partychicken.github.io/2022/06/12/%E8%BD%AF%E6%9E%84%E7%AC%94%E8%AE%B0/6%20%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%20(ADT)/image-20220609200313155.png">
+<meta property="og:image" content="http://partychicken.github.io/image-20220609203619895.png">
+<meta property="og:image" content="http://partychicken.github.io/2022/06/12/%E8%BD%AF%E6%9E%84%E7%AC%94%E8%AE%B0/6%20%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%20(ADT)/image-20220611080656778.png">
+<meta property="og:image" content="http://partychicken.github.io/image-20220612143727647.png">
+<meta property="og:image" content="http://partychicken.github.io/image-20220612144457364.png">
+<meta property="article:published_time" content="2022-06-12T09:45:41.271Z">
+<meta property="article:modified_time" content="2022-06-12T06:45:15.705Z">
+<meta property="article:author" content="partychicken">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://partychicken.github.io/2022/06/12/%E8%BD%AF%E6%9E%84%E7%AC%94%E8%AE%B0/6%20%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%20(ADT)/image-20220609200207104.png">
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css"
+    />
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"
+    />
+    
+    <link rel="stylesheet" href="/lib/mdui_043tiny/css/mdui.css?v=1655205515806">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1655205515806">
+    <link rel="stylesheet" href="/css/style.css?v=1655205515806">
+     
+    
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body class="mdui-drawer-body-left">
+    
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(https://s1.ax1x.com/2022/04/20/LDz59K.jpg)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="partychicken" class="mdui-btn mdui-btn-icon"><img src="https://avatars.githubusercontent.com/u/44670668?s=400&amp;v=4" alt="partychicken"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="partychicken">
+            <img src="https://avatars.githubusercontent.com/u/44670668?s=400&amp;v=4" alt="partychicken" alt="partychicken">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>Articles</span>13</div>
+        <div><span>Tags</span>3</div>
+        <div><span>Categories</span>2</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about.html" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/PY.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+         
+            <form id="search_form" action_e="https://cn.bing.com/search?q=site:nexmoe.com" onsubmit="return search();">
+                <label><input id="search_value" name="q" type="search" placeholder="Search"></label>
+            </form>
+         
+    </div>
+</div>
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="/null" target="_blank" mdui-tooltip="{content: 'QQ群'}" style="color: rgb(249, 174, 8);background-color: rgba(249, 174, 8, .1);">
+            <i class="nexmoefont icon-QQ"></i>
+        </a><a class="mdui-ripple" href="https://space.bilibili.com/" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/partychicken/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Categories</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/ACM/">ACM</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/ICS/">ICS</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/dp/" style="font-size: 10px;">dp</a> <a href="/tags/%E6%95%B0%E8%AE%BA/" style="font-size: 10px;">数论</a> <a href="/tags/%E6%9C%9F%E6%9C%9B/" style="font-size: 10px;">期望</a>
+    </div>
+    
+  </div>
+
+    
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2022 partychicken
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+      
+          <div class="nexmoe-post-cover" style="padding-bottom: 66.66666666666666%;"> 
+              <img data-fancybox="gallery" src="https://s1.ax1x.com/2022/04/20/LDz59K.jpg" alt="" loading="lazy">
+              <h1></h1>
+          </div>
+      
+      
+      <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2022年06月12日</a>
+</div>
+
+      <h1 id="6-抽象数据类型-ADT"><a href="#6-抽象数据类型-ADT" class="headerlink" title="6 抽象数据类型 (ADT)"></a>6 抽象数据类型 (ADT)</h1><p>抽象数据类型与表示独立性：如何设计良好的抽象数据结构，通过封装来避免客户端获取数据的内部表示（即“表示泄露”），避免潜在 的bug——在client和implementer之间建立“防火墙”</p>
+<p>ADT的特性：表示泄漏、抽象函数AF、表示不变量RI</p>
+<p>基于数学的形式对ADT的这些核心特征进行描述并应用于设计中。</p>
+<h2 id="Abstraction-and-User-Defined-Types"><a href="#Abstraction-and-User-Defined-Types" class="headerlink" title="Abstraction and User-Defined Types"></a>Abstraction and User-Defined Types</h2><p>除了编程语言所提供的基本数据类型和对象数据类型，程序员可定义自己的数据类型</p>
+<p>数据抽象：由一组操作所刻画的数据类型</p>
+<p>传统的类型定义：关注数据的具体表示</p>
+<p>抽象类型：强调“作用于数据上的操作”，程序员和 client无需关心数据如何具体存储的，只需设计&#x2F;使用操作即可</p>
+<p>ADT是由操作定义的，与其内部如何实现无关！</p>
+<h2 id="Classifying-Types-and-Operations"><a href="#Classifying-Types-and-Operations" class="headerlink" title="Classifying Types and Operations"></a>Classifying Types and Operations</h2><h3 id="Mutable-and-immutable-types"><a href="#Mutable-and-immutable-types" class="headerlink" title="Mutable and immutable types"></a>Mutable and immutable types</h3><p>可变类型的对象：提供了可改变其内部数据的值的操作</p>
+<p>不变数据类型： 其操作不改变内部值，而是构造新的对象</p>
+<h3 id="Operations"><a href="#Operations" class="headerlink" title="Operations"></a>Operations</h3><ul>
+<li>构造器</li>
+<li>生产器</li>
+<li>观察器</li>
+<li>变值器</li>
+</ul>
+<h2 id="Abstract-Data-Type-Examples"><a href="#Abstract-Data-Type-Examples" class="headerlink" title="Abstract Data Type Examples"></a>Abstract Data Type Examples</h2><h3 id="int-and-String"><a href="#int-and-String" class="headerlink" title="int and String"></a>int and String</h3><p>都是不可变的，没有变值器。</p>
+<img data-fancybox="gallery" src="image-20220609200207104.png" alt="image-20220609200207104" data-caption="image-20220609200207104" loading="lazy">
+
+<img data-fancybox="gallery" src="image-20220609200215955.png" alt="image-20220609200215955" data-caption="image-20220609200215955" loading="lazy">
+
+<h3 id="List"><a href="#List" class="headerlink" title="List"></a>List</h3><img data-fancybox="gallery" src="image-20220609200313155.png" alt="image-20220609200313155" data-caption="image-20220609200313155" loading="lazy">
+
+<h2 id="Designing-an-Abstract-Type"><a href="#Designing-an-Abstract-Type" class="headerlink" title="Designing an Abstract Type"></a>Designing an Abstract Type</h2><p>设计好的ADT，靠“经验法则”，提供一组操作，设计其行为规约 spec</p>
+<p>Rules:</p>
+<ol>
+<li>设计简洁、一致的操作</li>
+<li>要足以支持client对数据所做的所有操作需要，且用操作满足client需要的难度要低</li>
+</ol>
+<h2 id="Representation-Independence"><a href="#Representation-Independence" class="headerlink" title="Representation Independence"></a>Representation Independence</h2><p>表示独立性：client使用ADT时无需考虑其内部如何实现，ADT内部表示的变化不应影响外部spec和客户端。</p>
+<h2 id="Testing-an-Abstract-Data-Type"><a href="#Testing-an-Abstract-Data-Type" class="headerlink" title="Testing an Abstract Data Type"></a>Testing an Abstract Data Type</h2><p>测试creators, producers, and mutators：调用 observers 来观察这些 operations 的结果是否满足spec；</p>
+<p>测试observers：调用creators, producers, and mutators等方法产生或改变对象，来看结果是否正确。</p>
+<p>风险：如果被依赖的其他方法有错误，可能导致被测试方法的测试结果失效。</p>
+<h2 id="Invariants"><a href="#Invariants" class="headerlink" title="Invariants"></a>Invariants</h2><p>不变量：在任何时候总是true</p>
+<p>immutability就是一个典型的“不变量”</p>
+<p>由ADT来负责其不变量，与client端的任何行为无关</p>
+<p>可以使用 private 和 final 关键字来进行限制</p>
+<h2 id="Rep-Invariant-and-Abstraction-Function"><a href="#Rep-Invariant-and-Abstraction-Function" class="headerlink" title="Rep Invariant and Abstraction Function"></a>Rep Invariant and Abstraction Function</h2><p><img data-fancybox="gallery" src="/image-20220609203619895.png" alt="image-20220609203619895" data-caption="image-20220609203619895" loading="lazy"></p>
+<p>R: the space of representation values (rep values) consists of the values of the actual implementation entities.</p>
+<p>A: the space of abstract values consists of the values that the type is designed to support.  client看到和使用的值</p>
+<p>Every abstract value is mapped to by some rep value (surjective, 满射). </p>
+<p>Some abstract values are mapped to by more than one rep value (not injective, 未必单射). </p>
+<p>Not all rep values are mapped (not bijective, 未必双射)</p>
+<h3 id="Abstraction-Function"><a href="#Abstraction-Function" class="headerlink" title="Abstraction Function"></a>Abstraction Function</h3><p>抽象函数：R和A之间映射关系的函数，即如何去解释R中的每一个值为A中的每一个值。</p>
+<h3 id="Rep-Invariant"><a href="#Rep-Invariant" class="headerlink" title="Rep Invariant"></a>Rep Invariant</h3><p>表示不变性RI：某个具体的“表示”是否是“合法的”</p>
+<p>也可将RI看作：所有表示值的一个子集，包含了所有合法的表示值</p>
+<p>也可将RI看作：一个条件，描述了什么是“合法”的表示值</p>
+<p>Both the rep invariant and the abstraction function should be  documented in the code, right next to the declaration of the rep  itself: </p>
+<img data-fancybox="gallery" src="image-20220611080656778.png" alt="image-20220611080656778" data-caption="image-20220611080656778" loading="lazy">
+
+<p>The abstract value space alone doesn’t determine AF or RI</p>
+<p>设计ADT：</p>
+<ol>
+<li>选择R和A；</li>
+<li>RI — 合法的表示值； </li>
+<li>如何解释合法的表示值 —映射AF 做出具体的解释：每个rep value如何映射到abstract value</li>
+</ol>
+<p>在所有可能改变rep的方法内都要检查</p>
+<p>Observer方法可以不用，但建议也要检查，以防止你的“万一”</p>
+<ul>
+<li>Calling checkRep() in every method, including observers, means you’ll be more likely to catch rep invariant violations caused by rep exposure.</li>
+</ul>
+<h2 id="Beneficent-mutation"><a href="#Beneficent-mutation" class="headerlink" title="Beneficent mutation"></a>Beneficent mutation</h2><p>对immutable的ADT来说，它在A空间的abstract value应是不变的。但其内部表示的R空间中的取值则可以是变化的。这种变化称为有益的可变性（Beneficent mutation）</p>
+<h2 id="Documenting-the-AF-RI-and-Safety-from-Rep-Exposure"><a href="#Documenting-the-AF-RI-and-Safety-from-Rep-Exposure" class="headerlink" title="Documenting the AF, RI, and  Safety from Rep Exposure"></a>Documenting the AF, RI, and  Safety from Rep Exposure</h2><p>在代码中用注释形式记录AF和RI</p>
+<p>要精确的记录RI：rep中的所有fields何为有效</p>
+<p>要精确记录AF：如何解释每一个R值</p>
+<p>Another piece of documentation is a rep exposure safety argument  表示泄漏的安全声明</p>
+<p>给出理由，证明代码并未对外泄露其内部表示——自证清白</p>
+<p><img data-fancybox="gallery" src="/image-20220612143727647.png" alt="image-20220612143727647" data-caption="image-20220612143727647" loading="lazy"></p>
+<p>ADT的规约里只能使用client可见的内容来撰写，包括参数、返回值、异常等。如果规约里需要提及“值”，只能使用A空间中的“值”。ADT的规约里也不应谈及任何内部表示的细节，以及R空间中的任何值，ADT的内部表示(私有属性)对外部都应严格不可见。故在代码中以注释的形式写出AF和RI而不能在Javadoc文档中，防止被外部看到而破坏表示独立性&#x2F;信息隐藏。</p>
+<p>在对象的初始状态不变量为true，在对象发生变化时，不变量也要为true。即：</p>
+<ul>
+<li>构造器和生产器在创建对象时要确保不变量为true</li>
+<li>变值器和观察器在执行时必须保持不变性。</li>
+<li>在每个方法return之前，用checkRep()检查不变量是否得以保持。</li>
+</ul>
+<h2 id="ADT-invariants-replace-preconditions"><a href="#ADT-invariants-replace-preconditions" class="headerlink" title="ADT invariants replace  preconditions"></a>ADT invariants replace  preconditions</h2><p>用ADT不变量取代复杂的Precondition，相当于将复杂的precondition封装到了ADT内部。</p>
+<p><img data-fancybox="gallery" src="/image-20220612144457364.png" alt="image-20220612144457364" data-caption="image-20220612144457364" loading="lazy"></p>
+
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>Author：</strong>partychicken<br>
+        <strong>Link：</strong><a href="http://partychicken.github.io/2022/06/12/%E8%BD%AF%E6%9E%84%E7%AC%94%E8%AE%B0/6%20%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%20(ADT)/" title="http:&#x2F;&#x2F;partychicken.github.io&#x2F;2022&#x2F;06&#x2F;12&#x2F;%E8%BD%AF%E6%9E%84%E7%AC%94%E8%AE%B0&#x2F;6%20%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%20(ADT)&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;partychicken.github.io&#x2F;2022&#x2F;06&#x2F;12&#x2F;%E8%BD%AF%E6%9E%84%E7%AC%94%E8%AE%B0&#x2F;6%20%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%20(ADT)&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+    
+</div>
+
+  
+      <div class="nexmoe-post-footer">
+          <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '80b2453b6d5f37ad6225',
+        clientSecret: '43e99fa852795c9a7b3eb924b2558c64b84bbdeb',
+        id: window.location.pathname,
+        repo: 'partychicken.github.io',
+        owner: 'partychicken',
+        admin: 'partychicken'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+      </div>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+     
+    <div id="nexmoe-search-space">
+        <div class="search-container">
+            <div class="search-header">
+                <div class="search-input-container">
+                    <input class="search-input" type="text" placeholder="Search" oninput="sinput();">
+                </div>
+                <a class="search-close" onclick="sclose();">×</a>
+            </div>
+            <div class="search-body"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+ 
+
+<script async src="/js/app.js?v=1655205515810"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+
+    
+
+
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+
+</html>

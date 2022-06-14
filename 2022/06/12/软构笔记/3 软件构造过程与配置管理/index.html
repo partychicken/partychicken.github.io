@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    
+    <title>PC 的 blog</title>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="null">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    
+    
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <meta name="description" content="3 软件构造过程与配置管理Software Development LifecycleFrom 0 to 1 From 1 to n Traditional Software Process ModelsTwo basic types：  Linear 线性过程   Iterative 迭代过程    Existing models：  瀑布过程 增量过程 V字模型 原型过程 螺旋模型  选择合适">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PC 的 blog">
+<meta property="og:url" content="http://partychicken.github.io/2022/06/12/%E8%BD%AF%E6%9E%84%E7%AC%94%E8%AE%B0/3%20%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0%E8%BF%87%E7%A8%8B%E4%B8%8E%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86/index.html">
+<meta property="og:site_name" content="PC 的 blog">
+<meta property="og:description" content="3 软件构造过程与配置管理Software Development LifecycleFrom 0 to 1 From 1 to n Traditional Software Process ModelsTwo basic types：  Linear 线性过程   Iterative 迭代过程    Existing models：  瀑布过程 增量过程 V字模型 原型过程 螺旋模型  选择合适">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://partychicken.github.io/image-20220607212243684.png">
+<meta property="og:image" content="http://partychicken.github.io/image-20220607212346622.png">
+<meta property="og:image" content="http://partychicken.github.io/image-20220607212509868.png">
+<meta property="og:image" content="http://partychicken.github.io/image-20220607212523405.png">
+<meta property="og:image" content="http://partychicken.github.io/image-20220607213101226.png">
+<meta property="og:image" content="http://partychicken.github.io/image-20220607213827373.png">
+<meta property="og:image" content="http://partychicken.github.io/image-20220607213556547.png">
+<meta property="og:image" content="http://partychicken.github.io/image-20220607213943245.png">
+<meta property="og:image" content="http://partychicken.github.io/image-20220608162231028.png">
+<meta property="og:image" content="http://partychicken.github.io/image-20220608162923390.png">
+<meta property="og:image" content="http://partychicken.github.io/image-20220608163844435.png">
+<meta property="og:image" content="http://partychicken.github.io/image-20220608163900117.png">
+<meta property="og:image" content="http://partychicken.github.io/image-20220608164005636.png">
+<meta property="og:image" content="http://partychicken.github.io/image-20220608164915926.png">
+<meta property="article:published_time" content="2022-06-12T09:45:41.249Z">
+<meta property="article:modified_time" content="2022-06-08T09:11:25.322Z">
+<meta property="article:author" content="partychicken">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://partychicken.github.io/image-20220607212243684.png">
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css"
+    />
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"
+    />
+    
+    <link rel="stylesheet" href="/lib/mdui_043tiny/css/mdui.css?v=1655205515828">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1655205515828">
+    <link rel="stylesheet" href="/css/style.css?v=1655205515828">
+     
+    
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body class="mdui-drawer-body-left">
+    
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(https://s1.ax1x.com/2022/04/20/LDz59K.jpg)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="partychicken" class="mdui-btn mdui-btn-icon"><img src="https://avatars.githubusercontent.com/u/44670668?s=400&amp;v=4" alt="partychicken"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="partychicken">
+            <img src="https://avatars.githubusercontent.com/u/44670668?s=400&amp;v=4" alt="partychicken" alt="partychicken">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>Articles</span>13</div>
+        <div><span>Tags</span>3</div>
+        <div><span>Categories</span>2</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about.html" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/PY.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+         
+            <form id="search_form" action_e="https://cn.bing.com/search?q=site:nexmoe.com" onsubmit="return search();">
+                <label><input id="search_value" name="q" type="search" placeholder="Search"></label>
+            </form>
+         
+    </div>
+</div>
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="/null" target="_blank" mdui-tooltip="{content: 'QQ群'}" style="color: rgb(249, 174, 8);background-color: rgba(249, 174, 8, .1);">
+            <i class="nexmoefont icon-QQ"></i>
+        </a><a class="mdui-ripple" href="https://space.bilibili.com/" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/partychicken/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Categories</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/ACM/">ACM</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/ICS/">ICS</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/dp/" style="font-size: 10px;">dp</a> <a href="/tags/%E6%95%B0%E8%AE%BA/" style="font-size: 10px;">数论</a> <a href="/tags/%E6%9C%9F%E6%9C%9B/" style="font-size: 10px;">期望</a>
+    </div>
+    
+  </div>
+
+    
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2022 partychicken
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+      
+          <div class="nexmoe-post-cover" style="padding-bottom: 66.66666666666666%;"> 
+              <img data-fancybox="gallery" src="https://s1.ax1x.com/2022/04/20/LDz59K.jpg" alt="" loading="lazy">
+              <h1></h1>
+          </div>
+      
+      
+      <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2022年06月12日</a>
+</div>
+
+      <h1 id="3-软件构造过程与配置管理"><a href="#3-软件构造过程与配置管理" class="headerlink" title="3 软件构造过程与配置管理"></a>3 软件构造过程与配置管理</h1><h2 id="Software-Development-Lifecycle"><a href="#Software-Development-Lifecycle" class="headerlink" title="Software Development Lifecycle"></a>Software Development Lifecycle</h2><h3 id="From-0-to-1"><a href="#From-0-to-1" class="headerlink" title="From 0 to 1"></a>From 0 to 1</h3><p><img data-fancybox="gallery" src="/image-20220607212243684.png" alt="image-20220607212243684" data-caption="image-20220607212243684" loading="lazy"></p>
+<h3 id="From-1-to-n"><a href="#From-1-to-n" class="headerlink" title="From 1 to n"></a>From 1 to n</h3><p><img data-fancybox="gallery" src="/image-20220607212346622.png" alt="image-20220607212346622" data-caption="image-20220607212346622" loading="lazy"></p>
+<h2 id="Traditional-Software-Process-Models"><a href="#Traditional-Software-Process-Models" class="headerlink" title="Traditional Software Process Models"></a>Traditional Software Process Models</h2><p>Two basic types：</p>
+<ol>
+<li><p>Linear 线性过程</p>
+<p><img data-fancybox="gallery" src="/image-20220607212509868.png" alt="image-20220607212509868" data-caption="image-20220607212509868" loading="lazy"></p>
+</li>
+<li><p>Iterative 迭代过程</p>
+<p><img data-fancybox="gallery" src="/image-20220607212523405.png" alt="image-20220607212523405" data-caption="image-20220607212523405" loading="lazy"></p>
+</li>
+</ol>
+<p>Existing models：</p>
+<ol>
+<li>瀑布过程</li>
+<li>增量过程</li>
+<li>V字模型</li>
+<li>原型过程</li>
+<li>螺旋模型</li>
+</ol>
+<p>选择合适的过程模型的依据</p>
+<ol>
+<li>用户参与程度有多大？–适应变化的能力</li>
+<li>开发效率&#x2F;管理复杂度</li>
+<li>开发出的软件的质量</li>
+</ol>
+<h3 id="Waterfall-瀑布过程"><a href="#Waterfall-瀑布过程" class="headerlink" title="Waterfall 瀑布过程"></a>Waterfall 瀑布过程</h3><ul>
+<li>线性推进</li>
+<li>阶段划分清楚</li>
+<li>整体推进</li>
+<li><strong>无迭代</strong></li>
+<li>管理简单</li>
+<li>无法适应需求增加&#x2F;变化</li>
+</ul>
+<h3 id="Incremental-增量过程"><a href="#Incremental-增量过程" class="headerlink" title="Incremental 增量过程"></a>Incremental 增量过程</h3><ul>
+<li>线性推进</li>
+<li>增量式（多个瀑布的串行）</li>
+<li><strong>无迭代</strong></li>
+<li>比较容易适应需求的增加</li>
+</ul>
+<p><img data-fancybox="gallery" src="/image-20220607213101226.png" alt="image-20220607213101226" data-caption="image-20220607213101226" loading="lazy"></p>
+<h3 id="V-Model-for-verification-and-validation-V字模型"><a href="#V-Model-for-verification-and-validation-V字模型" class="headerlink" title="V-Model (for verification and validation) V字模型"></a>V-Model (for verification and validation) V字模型</h3><p><img data-fancybox="gallery" src="/image-20220607213827373.png" alt="image-20220607213827373" data-caption="image-20220607213827373" loading="lazy"></p>
+<h3 id="Prototyping-原型过程"><a href="#Prototyping-原型过程" class="headerlink" title="Prototyping 原型过程"></a>Prototyping 原型过程</h3><ul>
+<li>迭代：开发出来之后由用户试用&#x2F;评审，发现问题反馈给开发者，开发者修改原有的实现，继续交给用户评审。 </li>
+<li>循环往复这个过程，直到用户满意为止。 时间代价高，但开发质量也高。</li>
+</ul>
+<h3 id="Spiral-螺旋模型"><a href="#Spiral-螺旋模型" class="headerlink" title="Spiral 螺旋模型"></a>Spiral 螺旋模型</h3><ul>
+<li>多轮迭代基本遵循瀑布模式 </li>
+<li>每轮迭代有明确的目标，遵循“原型”过程，进行严格的风险分析，方可进入下一轮迭代</li>
+</ul>
+<p><img data-fancybox="gallery" src="/image-20220607213556547.png" alt="image-20220607213556547" data-caption="image-20220607213556547" loading="lazy"></p>
+<h2 id="Agile-Development"><a href="#Agile-Development" class="headerlink" title="Agile Development"></a>Agile Development</h2><p>敏捷开发：通过快速迭代和小规模的持续改进，以快速适应变化。</p>
+<p>敏捷宣言：</p>
+<p><img data-fancybox="gallery" src="/image-20220607213943245.png" alt="image-20220607213943245" data-caption="image-20220607213943245" loading="lazy"></p>
+<p>Agile &#x3D; 增量 + 迭代  </p>
+<p>每次迭代处理一个小规模增量</p>
+<h2 id="Software-Configuration-Management-SCM-and-Version-Control-System-VCS"><a href="#Software-Configuration-Management-SCM-and-Version-Control-System-VCS" class="headerlink" title="Software Configuration Management (SCM) and Version Control System (VCS)"></a>Software Configuration Management (SCM) and Version Control System (VCS)</h2><h3 id="SCM"><a href="#SCM" class="headerlink" title="SCM"></a>SCM</h3><p>软件配置管理：追踪和控制软件的变化</p>
+<p>SCM practices include revision control and the establishment of baselines. </p>
+<p>仓库：即于SCM中的CMDB</p>
+<p>工作拷贝：在开发者本地机器上的一份项目拷贝</p>
+<p>文件：一个独立的配置项</p>
+<p>版本：在某个特定时间点的所有文件的共同状态</p>
+<p>变化：即code  churn，两个版本之间的差异</p>
+<p>HEAD：程序员正在其上工作的版本</p>
+<h3 id="VCS-Version-Control-System"><a href="#VCS-Version-Control-System" class="headerlink" title="VCS - Version Control System"></a>VCS - Version Control System</h3><p>本地版本控制系统： 仓库存储于开发者本地机器，无法共享和协作</p>
+<p>集中式版本控制系统：仓库存储于独立的服务器，支持多开发者之间的协作</p>
+<p>分布式版本控制系统：仓库存储于独立的服务器+每个开发者的本地机器</p>
+<h2 id="Git-as-an-example-of-SCM-tool"><a href="#Git-as-an-example-of-SCM-tool" class="headerlink" title="Git as an example of SCM tool"></a>Git as an example of SCM tool</h2><p><img data-fancybox="gallery" src="/image-20220608162231028.png" alt="image-20220608162231028" data-caption="image-20220608162231028" loading="lazy"></p>
+<p>A Git repository has three parts:  </p>
+<ul>
+<li>.git directory (a repository storing all version control data) 本地的CMDB </li>
+<li>Working directory (local file system) 工作目录：本地文件系统 </li>
+<li>Staging area (in memory) 暂存区：隔离工作目录和Git仓库</li>
+</ul>
+<p>文件的三种状态：已修改，、已暂存，已提交</p>
+<h3 id="Object-Graph"><a href="#Object-Graph" class="headerlink" title="Object Graph"></a>Object Graph</h3><p>The Git object graph is stored in the .git directory of the repository.</p>
+<p>Object Graph记录了项目的历史，是DAG。</p>
+<p><img data-fancybox="gallery" src="/image-20220608162923390.png" alt="image-20220608162923390" data-caption="image-20220608162923390" loading="lazy"></p>
+<p>每个commit指向一个父亲</p>
+<p>多个commit指向同一个父亲：分支</p>
+<p>一个 commit 指向两个父亲：合并</p>
+<ul>
+<li>A branch is just a name that points to a commit.</li>
+<li>HEAD points to the current commit.</li>
+</ul>
+<h3 id="Commit"><a href="#Commit" class="headerlink" title="Commit"></a>Commit</h3><p>Git object graph stores each version of an individual file once, and allows multiple commits to share that one copy. </p>
+<p>Each commit also has log data — who, when, short log message, etc.</p>
+<p>传统VCS存储版本之间的变化（行）</p>
+<p>Git存储发生变化的文件（而非代码行）,不变化的文件不重复存储</p>
+<h3 id="Branch-x2F-Merge"><a href="#Branch-x2F-Merge" class="headerlink" title="Branch&#x2F;Merge"></a>Branch&#x2F;Merge</h3><p>A branch is the duplication of an object under revision control so that modifications can happen in parallel along both branches. </p>
+<p>Merging two branches together.</p>
+<p><img data-fancybox="gallery" src="/image-20220608163844435.png" alt="image-20220608163844435" data-caption="image-20220608163844435" loading="lazy"></p>
+<p><img data-fancybox="gallery" src="/image-20220608163900117.png" alt="image-20220608163900117" data-caption="image-20220608163900117" loading="lazy"></p>
+<h3 id="Collaboration"><a href="#Collaboration" class="headerlink" title="Collaboration"></a>Collaboration</h3><p><img data-fancybox="gallery" src="/image-20220608164005636.png" alt="image-20220608164005636" data-caption="image-20220608164005636" loading="lazy"></p>
+<h3 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub"></a>GitHub</h3><ul>
+<li>Basic process: commit, branch and merge </li>
+<li>Collaboration process: fork and pull request</li>
+</ul>
+<h2 id="General-process-of-software-construction"><a href="#General-process-of-software-construction" class="headerlink" title="General process of software construction"></a>General process of software construction</h2><p><img data-fancybox="gallery" src="/image-20220608164915926.png" alt="image-20220608164915926" data-caption="image-20220608164915926" loading="lazy"></p>
+<h3 id="Programming"><a href="#Programming" class="headerlink" title="Programming"></a>Programming</h3><h4 id="Construction-languages"><a href="#Construction-languages" class="headerlink" title="Construction languages"></a>Construction languages</h4><p>从用途上划分: </p>
+<ul>
+<li>Programming languages (e.g. C, C++, Java, Python) 编程语言 </li>
+<li>Modeling languages (e.g. UML) 建模语言 </li>
+<li>Configuration languages (e.g. XML) 配置语言 </li>
+<li>Build languages (e.g. XML) 构建语言</li>
+</ul>
+<p>从形态上划分 </p>
+<ul>
+<li>Linguistic-based 基于语言学的构造语言 </li>
+<li>Mathematics-based (formal) 基于数学的形式化构造语言 </li>
+<li>Graphics-based (visual) 基于图形的可视化构造语言</li>
+</ul>
+<h4 id="Programming-tools"><a href="#Programming-tools" class="headerlink" title="Programming tools"></a>Programming tools</h4><p>IDE: 集成开发环境，包括：</p>
+<ul>
+<li><p>源代码编辑器、智能代码补全工具、代码重构工具</p>
+</li>
+<li><p>文件管理</p>
+</li>
+<li><p>库管理</p>
+</li>
+<li><p>软件逻辑实体可视化</p>
+</li>
+<li><p>图形化用户界面构造器 (GUI builder)</p>
+</li>
+<li><p>编译器、解释器</p>
+</li>
+<li><p>自动化build工具</p>
+</li>
+<li><p>版本控制系统</p>
+</li>
+<li><p>外部的第三方工具</p>
+</li>
+</ul>
+<h3 id="Review-and-static-code-analysis"><a href="#Review-and-static-code-analysis" class="headerlink" title="Review and static code analysis"></a>Review and static code analysis</h3><p>包含：结对编程  走查  正式评审会议  自动化评审</p>
+<p>利用工具进行的静态代码分析: CheckStyle, SpotBugs, PMD for Java</p>
+<h3 id="Dynamic-code-analysis-x2F-profiling"><a href="#Dynamic-code-analysis-x2F-profiling" class="headerlink" title="Dynamic code analysis &#x2F; profiling"></a>Dynamic code analysis &#x2F; profiling</h3><p>动态分析：要执行程序并观察现象、收集数据、分析不足</p>
+<p>Profiling：对代码的运行时状态和性能进行度量，发现代码中的潜在问题。</p>
+<h3 id="Debugging-and-Testing"><a href="#Debugging-and-Testing" class="headerlink" title="Debugging and Testing"></a>Debugging and Testing</h3><p>测试：发现程序是否有错误</p>
+<p>调试：定位错误、发现错误根源</p>
+<h3 id="Refactoring"><a href="#Refactoring" class="headerlink" title="Refactoring"></a>Refactoring</h3><p>重构：在不改变功能的前提下优化代码</p>
+<h2 id="Narrow-sense-process-of-software-construction-Build）"><a href="#Narrow-sense-process-of-software-construction-Build）" class="headerlink" title="Narrow-sense process of software  construction (Build）"></a>Narrow-sense process of software  construction (Build）</h2><p>粗略理解build：</p>
+<p>build-time $\to$ run-time </p>
+<p>借助于工具，将软件构造各阶段的活动“自动化” (编译、打包、静态分析、测试、生成文档、部署、…) </p>
+<p>尽可能脱离“手工作业”，提高构造效率</p>
+
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>Author：</strong>partychicken<br>
+        <strong>Link：</strong><a href="http://partychicken.github.io/2022/06/12/%E8%BD%AF%E6%9E%84%E7%AC%94%E8%AE%B0/3%20%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0%E8%BF%87%E7%A8%8B%E4%B8%8E%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86/" title="http:&#x2F;&#x2F;partychicken.github.io&#x2F;2022&#x2F;06&#x2F;12&#x2F;%E8%BD%AF%E6%9E%84%E7%AC%94%E8%AE%B0&#x2F;3%20%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0%E8%BF%87%E7%A8%8B%E4%B8%8E%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;partychicken.github.io&#x2F;2022&#x2F;06&#x2F;12&#x2F;%E8%BD%AF%E6%9E%84%E7%AC%94%E8%AE%B0&#x2F;3%20%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0%E8%BF%87%E7%A8%8B%E4%B8%8E%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+    
+</div>
+
+  
+      <div class="nexmoe-post-footer">
+          <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '80b2453b6d5f37ad6225',
+        clientSecret: '43e99fa852795c9a7b3eb924b2558c64b84bbdeb',
+        id: window.location.pathname,
+        repo: 'partychicken.github.io',
+        owner: 'partychicken',
+        admin: 'partychicken'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+      </div>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+     
+    <div id="nexmoe-search-space">
+        <div class="search-container">
+            <div class="search-header">
+                <div class="search-input-container">
+                    <input class="search-input" type="text" placeholder="Search" oninput="sinput();">
+                </div>
+                <a class="search-close" onclick="sclose();">×</a>
+            </div>
+            <div class="search-body"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+ 
+
+<script async src="/js/app.js?v=1655205515831"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+
+    
+
+
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+
+</html>
