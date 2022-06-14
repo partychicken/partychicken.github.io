@@ -4,7 +4,7 @@
 
 <head>
     
-    <title>PC 的 blog</title>
+    <title>抽象数据类型 (ADT) - PC 的 blog</title>
     <meta charset="UTF-8">
     <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
@@ -14,23 +14,23 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <meta name="description" content="6 抽象数据类型 (ADT)抽象数据类型与表示独立性：如何设计良好的抽象数据结构，通过封装来避免客户端获取数据的内部表示（即“表示泄露”），避免潜在 的bug——在client和implementer之间建立“防火墙” ADT的特性：表示泄漏、抽象函数AF、表示不变量RI 基于数学的形式对ADT的这些核心特征进行描述并应用于设计中。 Abstraction and User-Defined Typ">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PC 的 blog">
-<meta property="og:url" content="http://partychicken.github.io/2022/06/12/%E8%BD%AF%E6%9E%84%E7%AC%94%E8%AE%B0/6%20%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%20(ADT)/index.html">
+<meta property="og:title" content="抽象数据类型 (ADT)">
+<meta property="og:url" content="http://partychicken.github.io/2022/06/14/6%20%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%20(ADT)/index.html">
 <meta property="og:site_name" content="PC 的 blog">
 <meta property="og:description" content="6 抽象数据类型 (ADT)抽象数据类型与表示独立性：如何设计良好的抽象数据结构，通过封装来避免客户端获取数据的内部表示（即“表示泄露”），避免潜在 的bug——在client和implementer之间建立“防火墙” ADT的特性：表示泄漏、抽象函数AF、表示不变量RI 基于数学的形式对ADT的这些核心特征进行描述并应用于设计中。 Abstraction and User-Defined Typ">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://partychicken.github.io/2022/06/12/%E8%BD%AF%E6%9E%84%E7%AC%94%E8%AE%B0/6%20%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%20(ADT)/image-20220609200207104.png">
-<meta property="og:image" content="http://partychicken.github.io/2022/06/12/%E8%BD%AF%E6%9E%84%E7%AC%94%E8%AE%B0/6%20%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%20(ADT)/image-20220609200215955.png">
-<meta property="og:image" content="http://partychicken.github.io/2022/06/12/%E8%BD%AF%E6%9E%84%E7%AC%94%E8%AE%B0/6%20%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%20(ADT)/image-20220609200313155.png">
-<meta property="og:image" content="http://partychicken.github.io/2022/06/12/%E8%BD%AF%E6%9E%84%E7%AC%94%E8%AE%B0/6%20%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%20(ADT)/image-20220609203619895.png">
-<meta property="og:image" content="http://partychicken.github.io/2022/06/12/%E8%BD%AF%E6%9E%84%E7%AC%94%E8%AE%B0/6%20%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%20(ADT)/image-20220611080656778.png">
-<meta property="og:image" content="http://partychicken.github.io/2022/06/12/%E8%BD%AF%E6%9E%84%E7%AC%94%E8%AE%B0/6%20%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%20(ADT)/image-20220612143727647.png">
-<meta property="og:image" content="http://partychicken.github.io/2022/06/12/%E8%BD%AF%E6%9E%84%E7%AC%94%E8%AE%B0/6%20%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%20(ADT)/image-20220612144457364.png">
-<meta property="article:published_time" content="2022-06-12T09:45:41.271Z">
-<meta property="article:modified_time" content="2022-06-12T06:45:15.705Z">
+<meta property="og:image" content="http://partychicken.github.io/2022/06/14/6%20%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%20(ADT)/image-20220609200207104.png">
+<meta property="og:image" content="http://partychicken.github.io/2022/06/14/6%20%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%20(ADT)/image-20220609200215955.png">
+<meta property="og:image" content="http://partychicken.github.io/2022/06/14/6%20%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%20(ADT)/image-20220609200313155.png">
+<meta property="og:image" content="http://partychicken.github.io/image-20220609203619895.png">
+<meta property="og:image" content="http://partychicken.github.io/2022/06/14/6%20%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%20(ADT)/image-20220611080656778.png">
+<meta property="og:image" content="http://partychicken.github.io/image-20220612143727647.png">
+<meta property="og:image" content="http://partychicken.github.io/image-20220612144457364.png">
+<meta property="article:published_time" content="2022-06-14T09:34:00.000Z">
+<meta property="article:modified_time" content="2022-06-14T11:27:46.868Z">
 <meta property="article:author" content="partychicken">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://partychicken.github.io/2022/06/12/%E8%BD%AF%E6%9E%84%E7%AC%94%E8%AE%B0/6%20%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%20(ADT)/image-20220609200207104.png">
+<meta name="twitter:image" content="http://partychicken.github.io/2022/06/14/6%20%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%20(ADT)/image-20220609200207104.png">
     <link
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css"
@@ -40,9 +40,9 @@
         href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"
     />
     
-    <link rel="stylesheet" href="/lib/mdui_043tiny/css/mdui.css?v=1655205840693">
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1655205840693">
-    <link rel="stylesheet" href="/css/style.css?v=1655205840693">
+    <link rel="stylesheet" href="/lib/mdui_043tiny/css/mdui.css?v=1655206346285">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1655206346285">
+    <link rel="stylesheet" href="/css/style.css?v=1655206346285">
      
     
 <meta name="generator" content="Hexo 6.1.0"></head>
@@ -179,13 +179,13 @@
   <article>
       
           <div class="nexmoe-post-cover" style="padding-bottom: 66.66666666666666%;"> 
-              <img data-fancybox="gallery" src="https://s1.ax1x.com/2022/04/20/LDz59K.jpg" alt="" loading="lazy">
-              <h1></h1>
+              <img data-fancybox="gallery" src="https://s1.ax1x.com/2022/04/20/LDz59K.jpg" alt="抽象数据类型 (ADT)" loading="lazy">
+              <h1>抽象数据类型 (ADT)</h1>
           </div>
       
       
       <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
-    <a><i class="nexmoefont icon-calendar-fill"></i>2022年06月12日</a>
+    <a><i class="nexmoefont icon-calendar-fill"></i>2022年06月14日</a>
 </div>
 
       <h1 id="6-抽象数据类型-ADT"><a href="#6-抽象数据类型-ADT" class="headerlink" title="6 抽象数据类型 (ADT)"></a>6 抽象数据类型 (ADT)</h1><p>抽象数据类型与表示独立性：如何设计良好的抽象数据结构，通过封装来避免客户端获取数据的内部表示（即“表示泄露”），避免潜在 的bug——在client和implementer之间建立“防火墙”</p>
@@ -194,7 +194,7 @@
 <h2 id="Abstraction-and-User-Defined-Types"><a href="#Abstraction-and-User-Defined-Types" class="headerlink" title="Abstraction and User-Defined Types"></a>Abstraction and User-Defined Types</h2><p>除了编程语言所提供的基本数据类型和对象数据类型，程序员可定义自己的数据类型</p>
 <p>数据抽象：由一组操作所刻画的数据类型</p>
 <p>传统的类型定义：关注数据的具体表示</p>
-<p>抽象类型：强调“作用于数据上的操作”，程序员和 client无需关心数据如何具体存储的，只需设计/使用操作即可</p>
+<p>抽象类型：强调“作用于数据上的操作”，程序员和 client无需关心数据如何具体存储的，只需设计&#x2F;使用操作即可</p>
 <p>ADT是由操作定义的，与其内部如何实现无关！</p>
 <h2 id="Classifying-Types-and-Operations"><a href="#Classifying-Types-and-Operations" class="headerlink" title="Classifying Types and Operations"></a>Classifying Types and Operations</h2><h3 id="Mutable-and-immutable-types"><a href="#Mutable-and-immutable-types" class="headerlink" title="Mutable and immutable types"></a>Mutable and immutable types</h3><p>可变类型的对象：提供了可改变其内部数据的值的操作</p>
 <p>不变数据类型： 其操作不改变内部值，而是构造新的对象</p>
@@ -205,9 +205,12 @@
 <li>变值器</li>
 </ul>
 <h2 id="Abstract-Data-Type-Examples"><a href="#Abstract-Data-Type-Examples" class="headerlink" title="Abstract Data Type Examples"></a>Abstract Data Type Examples</h2><h3 id="int-and-String"><a href="#int-and-String" class="headerlink" title="int and String"></a>int and String</h3><p>都是不可变的，没有变值器。</p>
-<p><img data-fancybox="gallery" src="image-20220609200207104.png" alt="image-20220609200207104" data-caption="image-20220609200207104" loading="lazy"></p>
-<p><img data-fancybox="gallery" src="image-20220609200215955.png" alt="image-20220609200215955" data-caption="image-20220609200215955" loading="lazy"></p>
-<h3 id="List"><a href="#List" class="headerlink" title="List"></a>List</h3><p><img data-fancybox="gallery" src="image-20220609200313155.png" alt="image-20220609200313155" data-caption="image-20220609200313155" loading="lazy"></p>
+<img data-fancybox="gallery" src="image-20220609200207104.png" alt="image-20220609200207104" data-caption="image-20220609200207104" loading="lazy">
+
+<img data-fancybox="gallery" src="image-20220609200215955.png" alt="image-20220609200215955" data-caption="image-20220609200215955" loading="lazy">
+
+<h3 id="List"><a href="#List" class="headerlink" title="List"></a>List</h3><img data-fancybox="gallery" src="image-20220609200313155.png" alt="image-20220609200313155" data-caption="image-20220609200313155" loading="lazy">
+
 <h2 id="Designing-an-Abstract-Type"><a href="#Designing-an-Abstract-Type" class="headerlink" title="Designing an Abstract Type"></a>Designing an Abstract Type</h2><p>设计好的ADT，靠“经验法则”，提供一组操作，设计其行为规约 spec</p>
 <p>Rules:</p>
 <ol>
@@ -222,7 +225,7 @@
 <p>immutability就是一个典型的“不变量”</p>
 <p>由ADT来负责其不变量，与client端的任何行为无关</p>
 <p>可以使用 private 和 final 关键字来进行限制</p>
-<h2 id="Rep-Invariant-and-Abstraction-Function"><a href="#Rep-Invariant-and-Abstraction-Function" class="headerlink" title="Rep Invariant and Abstraction Function"></a>Rep Invariant and Abstraction Function</h2><p><img data-fancybox="gallery" src="image-20220609203619895.png" alt="image-20220609203619895" data-caption="image-20220609203619895" loading="lazy"></p>
+<h2 id="Rep-Invariant-and-Abstraction-Function"><a href="#Rep-Invariant-and-Abstraction-Function" class="headerlink" title="Rep Invariant and Abstraction Function"></a>Rep Invariant and Abstraction Function</h2><p><img data-fancybox="gallery" src="/image-20220609203619895.png" alt="image-20220609203619895" data-caption="image-20220609203619895" loading="lazy"></p>
 <p>R: the space of representation values (rep values) consists of the values of the actual implementation entities.</p>
 <p>A: the space of abstract values consists of the values that the type is designed to support.  client看到和使用的值</p>
 <p>Every abstract value is mapped to by some rep value (surjective, 满射). </p>
@@ -233,13 +236,14 @@
 <p>也可将RI看作：所有表示值的一个子集，包含了所有合法的表示值</p>
 <p>也可将RI看作：一个条件，描述了什么是“合法”的表示值</p>
 <p>Both the rep invariant and the abstraction function should be  documented in the code, right next to the declaration of the rep  itself: </p>
-<p><img data-fancybox="gallery" src="image-20220611080656778.png" alt="image-20220611080656778" data-caption="image-20220611080656778" loading="lazy"></p>
+<img data-fancybox="gallery" src="image-20220611080656778.png" alt="image-20220611080656778" data-caption="image-20220611080656778" loading="lazy">
+
 <p>The abstract value space alone doesn’t determine AF or RI</p>
 <p>设计ADT：</p>
 <ol>
 <li>选择R和A；</li>
-<li>RI —- 合法的表示值； </li>
-<li>如何解释合法的表示值 —-映射AF 做出具体的解释：每个rep value如何映射到abstract value</li>
+<li>RI — 合法的表示值； </li>
+<li>如何解释合法的表示值 —映射AF 做出具体的解释：每个rep value如何映射到abstract value</li>
 </ol>
 <p>在所有可能改变rep的方法内都要检查</p>
 <p>Observer方法可以不用，但建议也要检查，以防止你的“万一”</p>
@@ -252,8 +256,8 @@
 <p>要精确记录AF：如何解释每一个R值</p>
 <p>Another piece of documentation is a rep exposure safety argument  表示泄漏的安全声明</p>
 <p>给出理由，证明代码并未对外泄露其内部表示——自证清白</p>
-<p><img data-fancybox="gallery" src="image-20220612143727647.png" alt="image-20220612143727647" data-caption="image-20220612143727647" loading="lazy"></p>
-<p>ADT的规约里只能使用client可见的内容来撰写，包括参数、返回值、异常等。如果规约里需要提及“值”，只能使用A空间中的“值”。ADT的规约里也不应谈及任何内部表示的细节，以及R空间中的任何值，ADT的内部表示(私有属性)对外部都应严格不可见。故在代码中以注释的形式写出AF和RI而不能在Javadoc文档中，防止被外部看到而破坏表示独立性/信息隐藏。</p>
+<p><img data-fancybox="gallery" src="/image-20220612143727647.png" alt="image-20220612143727647" data-caption="image-20220612143727647" loading="lazy"></p>
+<p>ADT的规约里只能使用client可见的内容来撰写，包括参数、返回值、异常等。如果规约里需要提及“值”，只能使用A空间中的“值”。ADT的规约里也不应谈及任何内部表示的细节，以及R空间中的任何值，ADT的内部表示(私有属性)对外部都应严格不可见。故在代码中以注释的形式写出AF和RI而不能在Javadoc文档中，防止被外部看到而破坏表示独立性&#x2F;信息隐藏。</p>
 <p>在对象的初始状态不变量为true，在对象发生变化时，不变量也要为true。即：</p>
 <ul>
 <li>构造器和生产器在创建对象时要确保不变量为true</li>
@@ -261,7 +265,7 @@
 <li>在每个方法return之前，用checkRep()检查不变量是否得以保持。</li>
 </ul>
 <h2 id="ADT-invariants-replace-preconditions"><a href="#ADT-invariants-replace-preconditions" class="headerlink" title="ADT invariants replace  preconditions"></a>ADT invariants replace  preconditions</h2><p>用ADT不变量取代复杂的Precondition，相当于将复杂的precondition封装到了ADT内部。</p>
-<p><img data-fancybox="gallery" src="image-20220612144457364.png" alt="image-20220612144457364" data-caption="image-20220612144457364" loading="lazy"></p>
+<p><img data-fancybox="gallery" src="/image-20220612144457364.png" alt="image-20220612144457364" data-caption="image-20220612144457364" loading="lazy"></p>
 
   </article>
 
@@ -269,7 +273,7 @@
       
     <div class="nexmoe-post-copyright">
         <strong>Author：</strong>partychicken<br>
-        <strong>Link：</strong><a href="http://partychicken.github.io/2022/06/12/%E8%BD%AF%E6%9E%84%E7%AC%94%E8%AE%B0/6%20%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%20(ADT)/" title="http:&#x2F;&#x2F;partychicken.github.io&#x2F;2022&#x2F;06&#x2F;12&#x2F;%E8%BD%AF%E6%9E%84%E7%AC%94%E8%AE%B0&#x2F;6%20%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%20(ADT)&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;partychicken.github.io&#x2F;2022&#x2F;06&#x2F;12&#x2F;%E8%BD%AF%E6%9E%84%E7%AC%94%E8%AE%B0&#x2F;6%20%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%20(ADT)&#x2F;</a><br>
+        <strong>Link：</strong><a href="http://partychicken.github.io/2022/06/14/6%20%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%20(ADT)/" title="http:&#x2F;&#x2F;partychicken.github.io&#x2F;2022&#x2F;06&#x2F;14&#x2F;6%20%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%20(ADT)&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;partychicken.github.io&#x2F;2022&#x2F;06&#x2F;14&#x2F;6%20%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%20(ADT)&#x2F;</a><br>
         
             <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
         
@@ -335,7 +339,7 @@
 
  
 
-<script async src="/js/app.js?v=1655205840695"></script>
+<script async src="/js/app.js?v=1655206346286"></script>
 
 
 
